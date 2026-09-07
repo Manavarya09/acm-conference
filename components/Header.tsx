@@ -1,3 +1,11 @@
+import {
+  ChevronDownIcon,
+  HomeIcon,
+  IdCardIcon,
+  MortarboardIcon,
+  PeopleIcon,
+  SearchIcon,
+} from "@/components/icons";
 import { faculty, org } from "@/content/event";
 
 /**
@@ -11,24 +19,20 @@ export default function Header() {
       <div className="bg-navy-bar text-white">
         <div className="mx-auto flex h-11 max-w-[1200px] items-center justify-between px-5">
           <div className="flex items-center gap-5">
-            <span aria-hidden className="text-base leading-none">
-              ⌂
-            </span>
+            <HomeIcon />
             <button
               type="button"
-              className="flex items-center gap-2 font-condensed text-[15px] tracking-wide"
+              className="flex items-center gap-2 font-condensed text-[17px] tracking-wide"
             >
               {org.region}
-              <span aria-hidden className="text-[10px]">
-                ▾
-              </span>
+              <ChevronDownIcon />
             </button>
           </div>
-          <div className="flex items-center gap-5 text-white/85" aria-hidden>
-            <span className="text-sm">▤</span>
-            <span className="text-sm">◍</span>
-            <span className="text-sm">▤</span>
-            <span className="text-sm">⌕</span>
+          <div className="flex items-center gap-6 text-white/90">
+            <IdCardIcon />
+            <PeopleIcon />
+            <MortarboardIcon />
+            <SearchIcon />
           </div>
         </div>
       </div>

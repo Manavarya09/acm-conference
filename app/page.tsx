@@ -1,4 +1,13 @@
 import {
+  CalendarIcon,
+  ClockIcon,
+  FacebookIcon,
+  LinkedInIcon,
+  MailIcon,
+  TicketIcon,
+  XIcon,
+} from "@/components/icons";
+import {
   agenda,
   conveners,
   event,
@@ -72,16 +81,14 @@ export default function EventPage() {
       <section className="border-b border-rule bg-grey-band">
         <div className="mx-auto flex max-w-[1200px] flex-wrap items-center gap-x-10 gap-y-3 px-5 py-5">
           {[
-            { icon: "▤", value: event.date },
-            { icon: "◔", value: event.time },
-            { icon: "▭", value: event.price },
-          ].map((item) => (
-            <div key={item.value} className="flex items-center gap-3">
-              <span aria-hidden className="text-lg leading-none text-brand">
-                {item.icon}
-              </span>
-              <span className="font-condensed text-[17px] uppercase tracking-wide text-ink">
-                {item.value}
+            { Icon: CalendarIcon, value: event.date },
+            { Icon: ClockIcon, value: event.time },
+            { Icon: TicketIcon, value: event.price },
+          ].map(({ Icon, value }) => (
+            <div key={value} className="flex items-center gap-3">
+              <Icon className="h-[22px] w-[22px] text-brand" />
+              <span className="font-condensed text-[19px] uppercase tracking-wide text-ink">
+                {value}
               </span>
             </div>
           ))}
@@ -209,20 +216,22 @@ export default function EventPage() {
         <h3 className="font-condensed text-[21px] font-medium text-black">
           Share this event
         </h3>
-        <div className="mt-4 flex gap-[2px]" aria-hidden>
+        <div className="mt-4 flex gap-[2px]">
           {[
-            { icon: "f", bg: "#3b5996" },
-            { icon: "𝕏", bg: "#000000" },
-            { icon: "in", bg: "#1b3d66" },
-            { icon: "✉", bg: "#8a8a8a" },
-          ].map((s) => (
-            <span
-              key={s.icon}
-              style={{ backgroundColor: s.bg }}
-              className="grid h-[58px] w-[58px] place-items-center text-[19px] font-semibold text-white"
+            { label: "Facebook", Icon: FacebookIcon, bg: "#3b5996" },
+            { label: "X", Icon: XIcon, bg: "#000000" },
+            { label: "LinkedIn", Icon: LinkedInIcon, bg: "#1b3d66" },
+            { label: "Email", Icon: MailIcon, bg: "#8a8a8a" },
+          ].map(({ label, Icon, bg }) => (
+            <a
+              key={label}
+              href="#"
+              aria-label={`Share on ${label}`}
+              style={{ backgroundColor: bg }}
+              className="grid h-[58px] w-[58px] place-items-center text-white"
             >
-              {s.icon}
-            </span>
+              <Icon />
+            </a>
           ))}
         </div>
       </section>

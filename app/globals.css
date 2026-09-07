@@ -26,31 +26,23 @@ body {
   -webkit-font-smoothing: antialiased;
 }
 
-/* Hero banner: placeholder artwork behind the reference's dark gradient. */
+/*
+ * Hero banner. The reference lays a dark gradient over a navy field of faint
+ * hand-drawn science motifs; the SVG below is a placeholder standing in for
+ * that artwork.
+ */
 .event-banner {
-  background-color: #10263d;
+  background-color: #0e2138;
   background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8)),
+    url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='420' height='260' viewBox='0 0 420 260'%3E%3Cg fill='none' stroke='%23ffffff' stroke-opacity='0.14' stroke-width='1.4' stroke-linecap='round'%3E%3Ccircle cx='60' cy='58' r='11'/%3E%3Cellipse cx='60' cy='58' rx='30' ry='11'/%3E%3Cellipse cx='60' cy='58' rx='30' ry='11' transform='rotate(60 60 58)'/%3E%3Cellipse cx='60' cy='58' rx='30' ry='11' transform='rotate(120 60 58)'/%3E%3Cpath d='M150 40v16m-8-8h16'/%3E%3Cpath d='M188 36h26m-13 0v14m-9 0h18l-9 16z'/%3E%3Ccircle cx='300' cy='48' r='16'/%3E%3Ccircle cx='322' cy='60' r='16'/%3E%3Cpath d='M366 34h34v26h-34zM366 34l10-9h34l-10 9m10-9v26l-10 9'/%3E%3Cpath d='M28 150h18m-9-9v18'/%3E%3Cpath d='M78 168c8-26 18-26 26 0'/%3E%3Cpath d='M74 150h34'/%3E%3Cpath d='M150 140l14 26h-28z'/%3E%3Cpath d='M196 138v30m-10-30h20m-20 30h20'/%3E%3Cpath d='M240 152h40m-40 10h40'/%3E%3Ccircle cx='318' cy='156' r='6'/%3E%3Ccircle cx='344' cy='142' r='6'/%3E%3Ccircle cx='344' cy='170' r='6'/%3E%3Cpath d='M323 152l16-8m-16 12l16 8'/%3E%3Cpath d='M382 140c14 0 14 30 0 30s-14-30 0-30'/%3E%3Cpath d='M40 224h30l-15 22z'/%3E%3Cpath d='M104 214v28m-8-28h16'/%3E%3Cpath d='M150 232h34'/%3E%3Ccircle cx='214' cy='228' r='13'/%3E%3Cpath d='M214 215v26'/%3E%3Cpath d='M260 216l24 24m0-24l-24 24'/%3E%3Cpath d='M312 240c10-30 22-30 32 0'/%3E%3Cpath d='M378 214h26v26h-26z'/%3E%3C/g%3E%3C/svg%3E"),
     radial-gradient(
-      circle at 78% 62%,
-      rgba(0, 109, 174, 0.55) 0%,
-      rgba(0, 109, 174, 0) 55%
-    ),
-    repeating-linear-gradient(
-      115deg,
-      rgba(255, 255, 255, 0.045) 0px,
-      rgba(255, 255, 255, 0.045) 1px,
-      transparent 1px,
-      transparent 46px
-    ),
-    repeating-linear-gradient(
-      25deg,
-      rgba(255, 255, 255, 0.045) 0px,
-      rgba(255, 255, 255, 0.045) 1px,
-      transparent 1px,
-      transparent 46px
+      ellipse at 82% 78%,
+      rgba(196, 122, 96, 0.5) 0%,
+      rgba(196, 122, 96, 0) 58%
     );
-  background-size: cover, cover, auto, auto;
-  background-position: center;
+  background-repeat: no-repeat, repeat, no-repeat;
+  background-size: cover, 420px 260px, cover;
+  background-position: center, center, center;
 }
 
 /* Placeholder standing in for a portrait photograph. */
