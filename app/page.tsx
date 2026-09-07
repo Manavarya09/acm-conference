@@ -37,11 +37,11 @@ function PersonRow({ person }: { person: Person }) {
       <div>
         <a
           href="#"
-          className="text-[15px] font-bold leading-[1.3] text-brand underline underline-offset-2"
+          className="font-condensed text-[14.4px] font-bold leading-[17.3px] text-brand underline underline-offset-2"
         >
           {person.name}
         </a>
-        <p className="mt-0.5 text-[14px] leading-[1.35] text-ink">
+        <p className="mt-1 text-[12px] leading-[16.8px] text-ink">
           {person.role}
         </p>
       </div>
@@ -51,7 +51,7 @@ function PersonRow({ person }: { person: Person }) {
 
 function SidebarHeading({ children }: { children: React.ReactNode }) {
   return (
-    <h2 className="font-condensed text-[25px] font-medium leading-tight text-black">
+    <h2 className="font-condensed text-[20.8px] font-medium leading-[25px] text-black">
       {children}
     </h2>
   );
@@ -109,8 +109,8 @@ export default function EventPage() {
                 key={i}
                 className={
                   i === 0
-                    ? "font-condensed text-[22px] font-bold leading-[1.35] text-black"
-                    : "text-[17px] leading-[1.65] text-ink"
+                    ? "font-condensed text-[18.4px] font-bold leading-[22px] text-black"
+                    : "text-[16px] leading-[22.4px] text-ink"
                 }
               >
                 {p}
@@ -118,7 +118,7 @@ export default function EventPage() {
             ))}
           </div>
 
-          <h2 className="mt-12 font-condensed text-[30px] font-bold text-black">
+          <h2 className="mt-12 font-condensed text-[25.6px] font-bold leading-[30.7px] text-black">
             Agenda
           </h2>
           <table className="mt-5 w-full max-w-[1020px] border-collapse text-left">
@@ -135,13 +135,13 @@ export default function EventPage() {
             <tbody>
               {agenda.map((item) => (
                 <tr key={item.time + item.title}>
-                  <td className="border-b border-rule px-[18px] py-[14px] align-top text-[16px] text-ink-soft">
+                  <td className="border-b border-rule px-[18px] py-[14px] align-top text-[16px] leading-[22.4px] text-ink-soft">
                     {item.time}
                   </td>
-                  <td className="border-b border-rule px-[18px] py-[14px] align-top text-[16px] text-ink-soft">
+                  <td className="border-b border-rule px-[18px] py-[14px] align-top text-[16px] leading-[22.4px] text-ink-soft">
                     <span className="block">{item.title}</span>
                     {item.detail && (
-                      <em className="mt-0.5 block text-[16px] italic leading-[1.5] text-ink-soft">
+                      <em className="block text-[16px] italic leading-[22.4px] text-ink-soft">
                         {item.detail}
                       </em>
                     )}
@@ -152,10 +152,10 @@ export default function EventPage() {
           </table>
 
           {/* Location */}
-          <h2 className="mt-12 font-condensed text-[30px] font-bold text-black">
+          <h2 className="mt-12 font-condensed text-[25.6px] font-bold leading-[30.7px] text-black">
             Location
           </h2>
-          <address className="mt-4 space-y-1 text-[17px] not-italic leading-[1.7] text-ink">
+          <address className="mt-4 space-y-1 text-[16px] not-italic leading-[22.4px] text-ink">
             {venue.lines.map((line) => (
               <div key={line}>{line}</div>
             ))}
@@ -165,7 +165,7 @@ export default function EventPage() {
           </div>
 
           {/* Share */}
-          <h2 className="mt-12 font-condensed text-[30px] font-bold text-black">
+          <h2 className="mt-12 font-condensed text-[25.6px] font-bold leading-[30.7px] text-black">
             Share this event
           </h2>
           <div className="mt-4 flex gap-[2px]">
@@ -210,7 +210,7 @@ export default function EventPage() {
             <ProfilePhoto />
             <a
               href="#"
-              className="text-[15px] font-bold text-brand underline underline-offset-2"
+              className="font-condensed text-[14.4px] font-bold text-brand underline underline-offset-2"
             >
               {partner}
             </a>

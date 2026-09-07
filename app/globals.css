@@ -15,9 +15,13 @@
   --color-blue-pale: #e7f3fe;
   --color-rule: #e4e4e4;
 
+  /*
+   * Reference typography: headings in Roboto Condensed, and body text left to
+   * the browser's generic sans-serif rather than a loaded webfont.
+   */
   --font-condensed: var(--font-roboto-condensed), "Roboto Condensed",
     "Arial Narrow", sans-serif;
-  --font-body: var(--font-roboto), Roboto, Arial, Helvetica, sans-serif;
+  --font-body: sans-serif;
 }
 
 body {
