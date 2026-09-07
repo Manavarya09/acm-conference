@@ -1,30 +1,38 @@
 import type { Metadata } from "next";
-import { Inter } from "next/font/google";
+import { Roboto, Roboto_Condensed } from "next/font/google";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { event } from "@/content/event";
 import "./globals.css";
 
-const inter = Inter({
+const roboto = Roboto({
   subsets: ["latin"],
-  variable: "--font-inter",
+  weight: ["400", "500", "700"],
+  variable: "--font-roboto",
+  display: "swap",
+});
+
+const robotoCondensed = Roboto_Condensed({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  variable: "--font-roboto-condensed",
   display: "swap",
 });
 
 export const metadata: Metadata = {
-  title: {
-    default: event.title,
-    template: `%s · ${event.name}`,
-  },
-  description: event.tagline,
+  title: event.title,
+  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
 };
 
 export default function RootLayout({
   children,
 }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en" className={inter.variable}>
-      <body className="font-sans">
+    <html
+      lang="en"
+      className={`${roboto.variable} ${robotoCondensed.variable}`}
+    >
+      <body>
         <Header />
         <main>{children}</main>
         <Footer />

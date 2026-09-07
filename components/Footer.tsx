@@ -1,56 +1,43 @@
-import Link from "next/link";
-import { event, nav, venue } from "@/content/event";
+import { org, utilityLinks } from "@/content/event";
 
 export default function Footer() {
   return (
-    <footer className="mt-24 border-t border-line bg-navy-950 text-white/70">
-      <div className="mx-auto grid max-w-6xl gap-10 px-5 py-14 sm:px-8 md:grid-cols-3">
-        <div>
-          <div className="flex items-center gap-2.5">
-            <span className="grid h-8 w-8 place-items-center rounded-md bg-white text-[13px] font-bold text-navy-900">
-              A
+    <footer className="bg-navy-bar text-white/75">
+      <div className="mx-auto max-w-[1200px] px-5 py-12">
+        <div className="flex items-center gap-3">
+          <span
+            aria-hidden
+            className="grid h-10 w-10 place-items-center rounded-sm bg-white font-condensed text-sm font-bold text-navy"
+          >
+            A
+          </span>
+          <span className="font-condensed text-[22px] font-medium leading-[1.05] text-white">
+            {org.name}
+            <span className="block text-[15px] font-normal text-white/70">
+              {org.sub}
             </span>
-            <span className="text-[15px] font-semibold tracking-tight text-white">
-              ACM<span className="text-accent-400">·</span>W
-            </span>
-          </div>
-          <p className="mt-4 max-w-xs text-sm leading-relaxed">
-            {event.tagline}
+          </span>
+        </div>
+
+        <ul className="mt-8 flex flex-wrap gap-x-8 gap-y-3">
+          {utilityLinks.map((link) => (
+            <li
+              key={link}
+              className="font-condensed text-[15px] uppercase tracking-wide text-white/80"
+            >
+              {link}
+            </li>
+          ))}
+        </ul>
+
+        <div className="mt-10 border-t border-white/15 pt-6 text-[13px] leading-relaxed">
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit sed do
+            eiusmod tempor incididunt ut labore.
           </p>
-        </div>
-
-        <div>
-          <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-white/45">
-            Navigate
-          </h3>
-          <ul className="mt-4 space-y-2.5 text-sm">
-            {nav.map((item) => (
-              <li key={item.href}>
-                <Link href={item.href} className="transition-colors hover:text-white">
-                  {item.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
-        </div>
-
-        <div>
-          <h3 className="text-xs font-semibold uppercase tracking-[0.16em] text-white/45">
-            Venue
-          </h3>
-          <address className="mt-4 space-y-1 text-sm not-italic leading-relaxed">
-            <div>{venue.room}</div>
-            <div>{venue.street}</div>
-            <div>{venue.city}</div>
-            <div>{venue.country}</div>
-          </address>
-        </div>
-      </div>
-
-      <div className="border-t border-white/10">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-6 text-xs sm:flex-row sm:items-center sm:justify-between sm:px-8">
-          <p>© 2026 Lorem Ipsum Dolor. All rights reserved.</p>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+          <p className="mt-2">
+            © 2026 Lorem Ipsum. ABN 00 000 000 000. LRM Provider Number 00000A.
+          </p>
         </div>
       </div>
     </footer>

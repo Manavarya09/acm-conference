@@ -1,60 +1,60 @@
 @import "tailwindcss";
 
 @theme {
-  --color-navy-950: #071528;
-  --color-navy-900: #0f2a4a;
-  --color-navy-800: #16395f;
-  --color-navy-700: #1d4a7a;
-  --color-accent-600: #0a66c2;
-  --color-accent-500: #1f7ae0;
-  --color-accent-400: #4d9bf0;
-  --color-sand-50: #fbfaf7;
-  --color-sand-100: #f4f2ec;
-  --color-line: #e3e0d8;
+  /* Palette sampled from the reference event page. */
+  --color-brand: #006dae;
+  --color-brand-dark: #0073b2;
+  --color-navy: #003c5f;
+  --color-navy-bar: #0d2c4a;
+  --color-ink: #3c3c3c;
+  --color-ink-soft: #505050;
+  --color-grey-band: #f2f2f2;
+  --color-grey-head: #f6f6f6;
+  --color-grey-soft: #fafafa;
+  --color-blue-pale: #e7f3fe;
+  --color-rule: #e4e4e4;
 
-  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-}
-
-html {
-  scroll-behavior: smooth;
+  --font-condensed: var(--font-roboto-condensed), "Roboto Condensed",
+    "Arial Narrow", sans-serif;
+  --font-body: var(--font-roboto), Roboto, Arial, Helvetica, sans-serif;
 }
 
 body {
-  background: var(--color-sand-50);
-  color: var(--color-navy-950);
+  background: #ffffff;
+  color: var(--color-ink);
+  font-family: var(--font-body);
   -webkit-font-smoothing: antialiased;
 }
 
-/* Faint blueprint grid used behind dark hero bands. */
-.grid-veil {
-  background-image: linear-gradient(
-      rgba(255, 255, 255, 0.05) 1px,
-      transparent 1px
+/* Hero banner: placeholder artwork behind the reference's dark gradient. */
+.event-banner {
+  background-color: #10263d;
+  background-image: linear-gradient(rgba(0, 0, 0, 0.1), rgba(0, 0, 0, 0.8)),
+    radial-gradient(
+      circle at 78% 62%,
+      rgba(0, 109, 174, 0.55) 0%,
+      rgba(0, 109, 174, 0) 55%
     ),
-    linear-gradient(90deg, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
-  background-size: 64px 64px;
+    repeating-linear-gradient(
+      115deg,
+      rgba(255, 255, 255, 0.045) 0px,
+      rgba(255, 255, 255, 0.045) 1px,
+      transparent 1px,
+      transparent 46px
+    ),
+    repeating-linear-gradient(
+      25deg,
+      rgba(255, 255, 255, 0.045) 0px,
+      rgba(255, 255, 255, 0.045) 1px,
+      transparent 1px,
+      transparent 46px
+    );
+  background-size: cover, cover, auto, auto;
+  background-position: center;
 }
 
-@keyframes rise {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: none;
-  }
-}
-
-.rise {
-  animation: rise 0.5s cubic-bezier(0.22, 1, 0.36, 1) both;
-}
-
-@media (prefers-reduced-motion: reduce) {
-  html {
-    scroll-behavior: auto;
-  }
-  .rise {
-    animation: none;
-  }
+/* Placeholder standing in for a portrait photograph. */
+.photo-placeholder {
+  background-color: #dfe6ec;
+  background-image: linear-gradient(160deg, #cfdae4 0%, #e9eef3 55%, #dbe4eb 100%);
 }

@@ -1,106 +1,75 @@
-"use client";
+import { faculty, org } from "@/content/event";
 
-import Link from "next/link";
-import { usePathname } from "next/navigation";
-import { useState } from "react";
-import { event, nav } from "@/content/event";
-
+/**
+ * Reproduces the reference page's three-band site chrome:
+ * dark utility bar, white masthead with wordmark + menu, grey faculty band.
+ */
 export default function Header() {
-  const pathname = usePathname();
-  const [open, setOpen] = useState(false);
-
   return (
-    <header className="sticky top-0 z-50 border-b border-line/80 bg-sand-50/85 backdrop-blur">
-      <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5 sm:px-8">
-        <Link
-          href="/"
-          onClick={() => setOpen(false)}
-          className="flex items-center gap-2.5"
-        >
-          <span className="grid h-8 w-8 place-items-center rounded-md bg-navy-900 text-[13px] font-bold tracking-tight text-white">
-            A
-          </span>
-          <span className="text-[15px] font-semibold tracking-tight text-navy-900">
-            ACM<span className="text-accent-600">·</span>W
-          </span>
-        </Link>
-
-        <nav className="hidden items-center gap-1 md:flex">
-          {nav.slice(0, 4).map((item) => {
-            const active = pathname === item.href;
-            return (
-              <Link
-                key={item.href}
-                href={item.href}
-                className={`rounded-md px-3 py-2 text-sm transition-colors ${
-                  active
-                    ? "font-semibold text-navy-900"
-                    : "text-navy-900/65 hover:text-navy-900"
-                }`}
-              >
-                {item.label}
-              </Link>
-            );
-          })}
-          <Link
-            href="/register"
-            className="ml-2 rounded-md bg-navy-900 px-4 py-2 text-sm font-semibold text-white transition-colors hover:bg-navy-800"
-          >
-            Register
-          </Link>
-        </nav>
-
-        <button
-          type="button"
-          onClick={() => setOpen((v) => !v)}
-          aria-expanded={open}
-          aria-label="Toggle navigation"
-          className="grid h-10 w-10 place-items-center rounded-md border border-line md:hidden"
-        >
-          <span className="space-y-1.5">
-            <span
-              className={`block h-0.5 w-5 bg-navy-900 transition-transform ${
-                open ? "translate-y-2 rotate-45" : ""
-              }`}
-            />
-            <span
-              className={`block h-0.5 w-5 bg-navy-900 transition-opacity ${
-                open ? "opacity-0" : ""
-              }`}
-            />
-            <span
-              className={`block h-0.5 w-5 bg-navy-900 transition-transform ${
-                open ? "-translate-y-2 -rotate-45" : ""
-              }`}
-            />
-          </span>
-        </button>
+    <header>
+      {/* Utility bar */}
+      <div className="bg-navy-bar text-white">
+        <div className="mx-auto flex h-11 max-w-[1200px] items-center justify-between px-5">
+          <div className="flex items-center gap-5">
+            <span aria-hidden className="text-base leading-none">
+              ⌂
+            </span>
+            <button
+              type="button"
+              className="flex items-center gap-2 font-condensed text-[15px] tracking-wide"
+            >
+              {org.region}
+              <span aria-hidden className="text-[10px]">
+                ▾
+              </span>
+            </button>
+          </div>
+          <div className="flex items-center gap-5 text-white/85" aria-hidden>
+            <span className="text-sm">▤</span>
+            <span className="text-sm">◍</span>
+            <span className="text-sm">▤</span>
+            <span className="text-sm">⌕</span>
+          </div>
+        </div>
       </div>
 
-      {open && (
-        <nav className="border-t border-line bg-sand-50 px-5 pb-4 md:hidden">
-          {nav.map((item) => (
-            <Link
-              key={item.href}
-              href={item.href}
-              onClick={() => setOpen(false)}
-              className={`block border-b border-line/70 py-3 text-[15px] ${
-                pathname === item.href
-                  ? "font-semibold text-navy-900"
-                  : "text-navy-900/70"
-              }`}
+      {/* Masthead */}
+      <div className="border-b border-rule bg-white">
+        <div className="mx-auto flex h-[72px] max-w-[1200px] items-center justify-between px-5">
+          <div className="flex items-center gap-3">
+            <span
+              aria-hidden
+              className="grid h-10 w-10 place-items-center rounded-sm bg-navy font-condensed text-sm font-bold text-white"
             >
-              {item.label}
-            </Link>
-          ))}
-          <a
-            href={event.registerHref}
-            className="mt-4 block rounded-md bg-navy-900 px-4 py-3 text-center text-sm font-semibold text-white"
+              A
+            </span>
+            <span className="font-condensed text-[22px] font-medium leading-[1.05] tracking-tight text-navy">
+              {org.name}
+              <span className="block text-[15px] font-normal text-ink-soft">
+                {org.sub}
+              </span>
+            </span>
+          </div>
+          <button
+            type="button"
+            aria-label="Open menu"
+            className="flex h-10 w-10 flex-col items-center justify-center gap-[5px]"
           >
-            Register now
-          </a>
-        </nav>
-      )}
+            <span className="block h-[3px] w-7 bg-navy" />
+            <span className="block h-[3px] w-7 bg-navy" />
+            <span className="block h-[3px] w-7 bg-navy" />
+          </button>
+        </div>
+      </div>
+
+      {/* Faculty band */}
+      <div className="bg-grey-band">
+        <div className="mx-auto max-w-[1200px] px-5 py-4 text-center">
+          <span className="font-condensed text-[22px] font-bold uppercase tracking-[0.02em] text-brand">
+            {faculty}
+          </span>
+        </div>
+      </div>
     </header>
   );
 }
