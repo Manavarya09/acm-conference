@@ -16,6 +16,7 @@ import {
   speakers,
   utilityLinks,
   venue,
+  type Person,
 } from "@/content/event";
 
 /** Placeholder standing in for a portrait photograph. */
@@ -23,32 +24,36 @@ function ProfilePhoto() {
   return (
     <div
       aria-hidden
-      className="photo-placeholder h-[86px] w-[86px] shrink-0 rounded-full"
+      className="photo-placeholder h-[52px] w-[52px] shrink-0 rounded-full"
     />
   );
 }
 
-/** Photo on the left, linked name and role stacked beside it — one per row. */
-function PersonList({ people }: { people: { name: string; role: string }[] }) {
+/** One sidebar entry: photo left, linked name and role stacked beside it. */
+function PersonRow({ person }: { person: Person }) {
   return (
-    <div className="mt-5 space-y-4">
-      {people.map((p) => (
-        <div key={p.name} className="flex items-start gap-5">
-          <ProfilePhoto />
-          <div className="pt-2">
-            <a
-              href="#"
-              className="font-body text-[17px] font-bold text-brand underline underline-offset-2"
-            >
-              {p.name}
-            </a>
-            <p className="mt-1 max-w-[640px] text-[16px] leading-[1.5] text-ink">
-              {p.role}
-            </p>
-          </div>
-        </div>
-      ))}
-    </div>
+    <li className="flex items-start gap-3">
+      <ProfilePhoto />
+      <div>
+        <a
+          href="#"
+          className="text-[15px] font-bold leading-[1.3] text-brand underline underline-offset-2"
+        >
+          {person.name}
+        </a>
+        <p className="mt-0.5 text-[14px] leading-[1.35] text-ink">
+          {person.role}
+        </p>
+      </div>
+    </li>
+  );
+}
+
+function SidebarHeading({ children }: { children: React.ReactNode }) {
+  return (
+    <h2 className="font-condensed text-[25px] font-medium leading-tight text-black">
+      {children}
+    </h2>
   );
 }
 
@@ -57,8 +62,8 @@ export default function EventPage() {
     <>
       {/* Banner */}
       <section className="event-banner">
-        <div className="mx-auto max-w-[1200px] px-5 pb-8 pt-20">
-          <h1 className="max-w-4xl font-condensed text-[28px] font-bold leading-[1.2] text-white sm:text-[44px] sm:leading-[1.15]">
+        <div className="mx-auto max-w-[1500px] px-8 pb-9 pt-24">
+          <h1 className="max-w-4xl font-condensed text-[30px] font-bold leading-[1.15] text-white sm:text-[46px]">
             {event.title}
           </h1>
           <div className="mt-6 flex flex-wrap items-center gap-x-3 gap-y-2">
@@ -79,7 +84,7 @@ export default function EventPage() {
 
       {/* Date / time / price strip */}
       <section className="border-b border-rule bg-grey-band">
-        <div className="mx-auto flex max-w-[1200px] flex-wrap items-center gap-x-10 gap-y-3 px-5 py-5">
+        <div className="mx-auto flex max-w-[1500px] flex-wrap items-center gap-x-12 gap-y-3 px-8 py-5">
           {[
             { Icon: CalendarIcon, value: event.date },
             { Icon: ClockIcon, value: event.time },
@@ -95,34 +100,31 @@ export default function EventPage() {
         </div>
       </section>
 
-      {/* Intro copy */}
-      <section className="mx-auto max-w-[1200px] px-5 py-12">
-        <div className="max-w-[820px] space-y-5">
-          {intro.map((p, i) => (
-            <p
-              key={i}
-              className={
-                i === 0
-                  ? "font-condensed text-[21px] font-bold leading-[1.35] text-black"
-                  : "text-[16px] leading-[1.7] text-ink-soft"
-              }
-            >
-              {p}
-            </p>
-          ))}
-        </div>
-      </section>
+      {/* Body: content left, speakers sidebar right */}
+      <div className="mx-auto grid max-w-[1500px] gap-x-8 gap-y-12 px-8 py-12 lg:grid-cols-[minmax(0,1fr)_390px]">
+        <div>
+          <div className="max-w-[1000px] space-y-6">
+            {intro.map((p, i) => (
+              <p
+                key={i}
+                className={
+                  i === 0
+                    ? "font-condensed text-[22px] font-bold leading-[1.35] text-black"
+                    : "text-[17px] leading-[1.65] text-ink"
+                }
+              >
+                {p}
+              </p>
+            ))}
+          </div>
 
-      {/* Agenda */}
-      <section className="mx-auto max-w-[1200px] px-5 pb-14">
-        <h2 className="font-condensed text-[22px] font-bold text-black">
-          Agenda
-        </h2>
-        <div className="mt-4">
-          <table className="w-full border-collapse text-left">
+          <h2 className="mt-12 font-condensed text-[30px] font-bold text-black">
+            Agenda
+          </h2>
+          <table className="mt-5 w-full max-w-[1020px] border-collapse text-left">
             <thead>
               <tr>
-                <th className="w-[26%] border-b border-rule bg-grey-head px-[18px] py-[14px] text-[16px] font-bold text-ink-soft">
+                <th className="w-[22%] border-b border-rule bg-grey-head px-[18px] py-[14px] text-[16px] font-bold text-ink-soft">
                   Time
                 </th>
                 <th className="border-b border-rule bg-grey-head px-[18px] py-[14px] text-[16px] font-bold text-ink-soft">
@@ -148,12 +150,77 @@ export default function EventPage() {
               ))}
             </tbody>
           </table>
+
+          {/* Location */}
+          <h2 className="mt-12 font-condensed text-[30px] font-bold text-black">
+            Location
+          </h2>
+          <address className="mt-4 space-y-1 text-[17px] not-italic leading-[1.7] text-ink">
+            {venue.lines.map((line) => (
+              <div key={line}>{line}</div>
+            ))}
+          </address>
+          <div className="photo-placeholder mt-6 grid h-[380px] max-w-[1020px] place-items-center text-[15px] uppercase tracking-wide text-ink-soft">
+            Map placeholder
+          </div>
+
+          {/* Share */}
+          <h2 className="mt-12 font-condensed text-[30px] font-bold text-black">
+            Share this event
+          </h2>
+          <div className="mt-4 flex gap-[2px]">
+            {[
+              { label: "Facebook", Icon: FacebookIcon, bg: "#3b5996" },
+              { label: "X", Icon: XIcon, bg: "#000000" },
+              { label: "LinkedIn", Icon: LinkedInIcon, bg: "#1b3d66" },
+              { label: "Email", Icon: MailIcon, bg: "#8a8a8a" },
+            ].map(({ label, Icon, bg }) => (
+              <a
+                key={label}
+                href="#"
+                aria-label={`Share on ${label}`}
+                style={{ backgroundColor: bg }}
+                className="grid h-[58px] w-[58px] place-items-center text-white"
+              >
+                <Icon />
+              </a>
+            ))}
+          </div>
         </div>
-      </section>
+
+        {/* Sidebar */}
+        <aside className="bg-grey-soft p-7 lg:self-start">
+          <SidebarHeading>Speakers and Panelists</SidebarHeading>
+          <ul className="mt-5 space-y-4">
+            {speakers.map((p) => (
+              <PersonRow key={p.name} person={p} />
+            ))}
+          </ul>
+
+          <div className="mt-10">
+            <SidebarHeading>Event Conveners</SidebarHeading>
+            <ul className="mt-5 space-y-4">
+              {conveners.map((p) => (
+                <PersonRow key={p.name} person={p} />
+              ))}
+            </ul>
+          </div>
+
+          <div className="mt-10 flex items-center gap-3">
+            <ProfilePhoto />
+            <a
+              href="#"
+              className="text-[15px] font-bold text-brand underline underline-offset-2"
+            >
+              {partner}
+            </a>
+          </div>
+        </aside>
+      </div>
 
       {/* Audience link band */}
       <section className="bg-grey-band">
-        <div className="mx-auto flex max-w-[1200px] flex-wrap justify-center gap-x-8 gap-y-2 px-5 py-4">
+        <div className="mx-auto flex max-w-[1500px] flex-wrap justify-center gap-x-9 gap-y-2 px-8 py-4">
           {utilityLinks.map((link) => (
             <span
               key={link}
@@ -161,77 +228,6 @@ export default function EventPage() {
             >
               {link}
             </span>
-          ))}
-        </div>
-      </section>
-
-      {/* Speakers */}
-      <section className="mx-auto max-w-[1200px] px-5 py-14">
-        <h3 className="font-condensed text-[21px] font-medium text-black">
-          Speakers and Panelists
-        </h3>
-        <PersonList people={speakers} />
-      </section>
-
-      {/* Conveners */}
-      <section className="mx-auto max-w-[1200px] px-5 pb-14">
-        <h3 className="font-condensed text-[21px] font-medium text-black">
-          Event Conveners
-        </h3>
-        <PersonList people={conveners} />
-      </section>
-
-      {/* Partner */}
-      <section className="mx-auto max-w-[1200px] px-5 pb-14">
-        <div className="flex items-start gap-5">
-          <ProfilePhoto />
-          <div className="pt-2">
-            <a
-              href="#"
-              className="font-body text-[17px] font-bold text-brand underline underline-offset-2"
-            >
-              {partner}
-            </a>
-          </div>
-        </div>
-      </section>
-
-      {/* Location */}
-      <section className="mx-auto max-w-[1200px] px-5 pb-14">
-        <h3 className="font-condensed text-[21px] font-medium text-black">
-          Location
-        </h3>
-        <address className="mt-4 space-y-1 text-[16px] not-italic leading-[1.7] text-ink-soft">
-          {venue.lines.map((line) => (
-            <div key={line}>{line}</div>
-          ))}
-        </address>
-        <div className="photo-placeholder mt-6 grid h-[320px] max-w-[820px] place-items-center rounded-sm text-[15px] uppercase tracking-wide text-ink-soft">
-          Map placeholder
-        </div>
-      </section>
-
-      {/* Share */}
-      <section className="mx-auto max-w-[1200px] px-5 pb-16">
-        <h3 className="font-condensed text-[21px] font-medium text-black">
-          Share this event
-        </h3>
-        <div className="mt-4 flex gap-[2px]">
-          {[
-            { label: "Facebook", Icon: FacebookIcon, bg: "#3b5996" },
-            { label: "X", Icon: XIcon, bg: "#000000" },
-            { label: "LinkedIn", Icon: LinkedInIcon, bg: "#1b3d66" },
-            { label: "Email", Icon: MailIcon, bg: "#8a8a8a" },
-          ].map(({ label, Icon, bg }) => (
-            <a
-              key={label}
-              href="#"
-              aria-label={`Share on ${label}`}
-              style={{ backgroundColor: bg }}
-              className="grid h-[58px] w-[58px] place-items-center text-white"
-            >
-              <Icon />
-            </a>
           ))}
         </div>
       </section>

@@ -90,6 +90,20 @@ export const agenda: AgendaItem[] = [
   { time: "5.00pm onwards", title: "Networking & Refreshments" },
 ];
 
+export const utilityCentre = ["Lorem", "Ipsum Online", "Library", "Donate"];
+
+export const utilityRight = ["Staff", "Students", "Alumni"];
+
+export const mainNav = [
+  "Study",
+  "Research",
+  "Industry and Alumni",
+  "Students",
+  "About Us",
+  "News",
+  "Events",
+];
+
 export const utilityLinks = [
   "Alumni",
   "Current Students",
