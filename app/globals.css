@@ -22,6 +22,18 @@
   --font-condensed: var(--font-roboto-condensed), "Roboto Condensed",
     "Arial Narrow", sans-serif;
   --font-body: sans-serif;
+
+  /* Additions for the sections recreated from other conference sites. */
+  --color-warm: #c47a60;
+  --color-warm-soft: #f8ebe5;
+  --color-sand: #f1eee7;
+  /* WiCode 27's own purple, used only where the page talks about WiCode. */
+  --color-wicode: #6d28d9;
+  --color-wicode-deep: #2e1065;
+  --color-wicode-light: #d8c4ff;
+  --font-display: var(--font-geist), system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, Menlo, monospace;
+  --font-serif: var(--font-instrument-serif), Georgia, serif;
 }
 
 body {
@@ -54,4 +66,48 @@ body {
 .photo-placeholder {
   background-color: #dfe6ec;
   background-image: linear-gradient(160deg, #cfdae4 0%, #e9eef3 55%, #dbe4eb 100%);
+}
+
+/* WiCode 27 field, after Figma Config: loose white blobs on a bold colour. */
+.blob-field {
+  background-color: var(--color-wicode);
+  background-image:
+    radial-gradient(ellipse 22px 14px at 20% 30%, rgba(255, 255, 255, 0.55) 98%, transparent),
+    radial-gradient(ellipse 16px 11px at 70% 65%, rgba(255, 255, 255, 0.4) 98%, transparent),
+    radial-gradient(ellipse 12px 8px at 45% 85%, rgba(255, 255, 255, 0.35) 98%, transparent);
+  background-size: 90px 70px, 130px 90px, 60px 50px;
+}
+
+/* Scholar quote, after OCWiC: warm gradient block. */
+.quote-gradient {
+  background-image: linear-gradient(100deg, #f0b35a 0%, #d9713f 100%);
+}
+
+/* Hide the horizontal scrollbar on the speaker rows; they still scroll. */
+.no-scrollbar {
+  scrollbar-width: none;
+}
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+/* Closing band tiles, after Figma Config's footer: blobs on colour blocks. */
+.config-tile {
+  background-image: radial-gradient(ellipse 18px 10px at 50% 50%, #000 96%, transparent);
+  background-size: 44px 30px;
+}
+.config-tile-dots {
+  background-image: radial-gradient(circle 3px at 50% 50%, #000 96%, transparent);
+  background-size: 12px 12px;
+}
+
+/* Safari still draws the default marker on FAQ summaries without this. */
+#faq summary::-webkit-details-marker,
+.menu summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Keep section headings clear of the sticky header when jumping to them. */
+section[id] {
+  scroll-margin-top: 76px;
 }

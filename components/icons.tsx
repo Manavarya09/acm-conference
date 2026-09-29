@@ -120,3 +120,11 @@ export function MailIcon({ className = "h-[22px] w-[22px]" }: IconProps) {
     </svg>
   );
 }
+
+export function PinIcon({ className = "h-[22px] w-[22px]" }: IconProps) {
+  return (
+    <svg viewBox="0 0 24 24" fill="currentColor" className={`${base} ${className}`} aria-hidden>
+      <path d="M12 2.4a7.2 7.2 0 0 0-7.2 7.2c0 5.1 6.4 11.4 6.6 11.7a.9.9 0 0 0 1.2 0c.3-.3 6.6-6.6 6.6-11.7A7.2 7.2 0 0 0 12 2.4Zm0 10a2.8 2.8 0 1 1 0-5.6 2.8 2.8 0 0 1 0 5.6Z" />
+    </svg>
+  );
+}

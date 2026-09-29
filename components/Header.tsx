@@ -7,9 +7,9 @@ import {
   SearchIcon,
 } from "@/components/icons";
 import {
-  faculty,
-  mainNav,
+  brand,
   org,
+  sectionNav,
   utilityCentre,
   utilityRight,
 } from "@/content/event";
@@ -17,21 +17,25 @@ import {
 const rightIcons = [IdCardIcon, PeopleIcon, MortarboardIcon];
 
 /**
- * Site chrome: thin black bar, masthead (mark / centred faculty title /
- * apply button), then the centred primary nav. Collapses to the mark plus a
- * menu button below the lg breakpoint.
+ * Thin black bar and blue utility bar (these scroll away), then one sticky bar:
+ * mark and conference lockup, the section links and a single Register button.
+ * Below lg the links fold into a <details> menu, so no client-side JavaScript
+ * is needed.
  */
 export default function Header() {
   return (
-    <header className="border-b border-rule bg-white">
+    <>
       <div className="h-[10px] bg-black" />
 
       {/* Blue utility bar */}
       <div className="bg-utility text-white">
-        <div className="mx-auto flex h-[52px] max-w-[1500px] items-center gap-6 px-8">
+        <div className="mx-auto flex h-[52px] max-w-[1500px] items-center gap-6 px-6 sm:px-12 lg:px-20">
           <div className="flex shrink-0 items-center gap-5">
             <HomeIcon className="h-[19px] w-[19px]" />
-            <button type="button" className="flex items-center gap-2 text-[16px]">
+            <button
+              type="button"
+              className="flex items-center gap-2 text-[16px]"
+            >
               {org.region}
               <ChevronDownIcon />
             </button>
@@ -68,62 +72,78 @@ export default function Header() {
         </div>
       </div>
 
-      <div className="mx-auto flex max-w-[1500px] items-center gap-6 px-8 py-5">
-        {/* Mark — placeholder for the chapter's own logo. */}
-        <div className="flex shrink-0 items-center gap-3">
-          <span
-            aria-hidden
-            className="grid h-11 w-11 place-items-center rounded-sm bg-navy font-condensed text-base font-bold text-white"
-          >
-            A
-          </span>
-          <span className="font-condensed text-[21px] font-medium leading-[1.02] tracking-tight text-navy">
-            {org.name}
-            <span className="block text-[15px] font-normal text-ink-soft">
-              {org.sub}
+      <header className="sticky top-0 z-30 border-b border-rule bg-white">
+        <div className="mx-auto flex h-[76px] max-w-[1500px] items-center gap-6 px-6 sm:px-12 lg:px-20">
+          {/* Mark — placeholder for the chapter's own logo. */}
+          <a href="#top" className="flex shrink-0 items-center gap-3">
+            <span
+              aria-hidden
+              className="grid h-11 w-11 place-items-center rounded-sm bg-navy font-condensed text-base font-bold text-white"
+            >
+              A
             </span>
-          </span>
-        </div>
+            <span className="font-condensed text-[21px] font-medium leading-[1.02] tracking-tight text-navy">
+              {brand.name}
+              <span className="block text-[15px] font-normal text-ink-soft">
+                {brand.sub}
+              </span>
+            </span>
+          </a>
 
-        <div className="flex-1 text-center">
-          <span className="font-condensed text-[21px] font-bold uppercase tracking-[0.01em] text-brand">
-            {faculty}
-          </span>
-        </div>
+          <nav className="ml-auto hidden lg:block" aria-label="Sections">
+            <ul className="flex gap-8">
+              {sectionNav.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    className="font-condensed text-[17px] font-bold uppercase tracking-[0.02em] text-ink hover:text-brand"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </nav>
 
-        <div className="flex shrink-0 items-center gap-4">
-          <button
-            type="button"
-            className="hidden border border-brand px-6 py-3 font-condensed text-[15px] font-bold uppercase tracking-wide text-navy transition-colors hover:bg-blue-pale lg:block"
+          <a
+            href="#register"
+            className="ml-auto hidden bg-brand px-6 py-3 font-condensed text-[15px] font-bold uppercase tracking-wide text-white transition-colors hover:bg-navy sm:block lg:ml-0"
           >
-            Apply to study
-          </button>
-          <button
-            type="button"
-            aria-label="Open menu"
-            className="flex h-10 w-10 flex-col items-center justify-center gap-[5px] lg:hidden"
-          >
-            <span className="block h-[3px] w-7 bg-navy" />
-            <span className="block h-[3px] w-7 bg-navy" />
-            <span className="block h-[3px] w-7 bg-navy" />
-          </button>
-        </div>
-      </div>
+            Register
+          </a>
 
-      <nav className="hidden pb-4 lg:block">
-        <ul className="mx-auto flex max-w-[1500px] justify-center gap-11 px-8">
-          {mainNav.map((item) => (
-            <li key={item}>
-              <a
-                href="#"
-                className="font-condensed text-[17px] font-bold uppercase tracking-[0.02em] text-ink hover:text-brand"
-              >
-                {item}
-              </a>
-            </li>
-          ))}
-        </ul>
-      </nav>
-    </header>
+          <details className="menu relative ml-auto sm:ml-0 lg:hidden">
+            <summary
+              aria-label="Open menu"
+              className="flex h-10 w-10 cursor-pointer list-none flex-col items-center justify-center gap-[5px]"
+            >
+              <span className="block h-[3px] w-7 bg-navy" />
+              <span className="block h-[3px] w-7 bg-navy" />
+              <span className="block h-[3px] w-7 bg-navy" />
+            </summary>
+            <ul className="absolute right-0 top-12 w-60 border border-rule bg-white py-2 shadow-lg">
+              {sectionNav.map((item) => (
+                <li key={item.href}>
+                  <a
+                    href={item.href}
+                    className="block px-5 py-2.5 font-condensed text-[17px] font-bold uppercase text-ink hover:bg-blue-pale"
+                  >
+                    {item.label}
+                  </a>
+                </li>
+              ))}
+              <li className="px-5 pb-2 pt-3 sm:hidden">
+                <a
+                  href="#register"
+                  className="block bg-brand px-4 py-2.5 text-center font-condensed text-[15px] font-bold uppercase tracking-wide text-white"
+                >
+                  Register
+                </a>
+              </li>
+            </ul>
+          </details>
+        </div>
+      </header>
+    </>
   );
 }

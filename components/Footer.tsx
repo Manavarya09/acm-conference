@@ -3,7 +3,7 @@ import { org, utilityLinks } from "@/content/event";
 export default function Footer() {
   return (
     <footer className="bg-navy-bar text-white/75">
-      <div className="mx-auto max-w-[1200px] px-5 py-12">
+      <div className="mx-auto max-w-[1200px] px-6 sm:px-12 lg:px-20 py-12">
         <div className="flex items-center gap-3">
           <span
             aria-hidden
