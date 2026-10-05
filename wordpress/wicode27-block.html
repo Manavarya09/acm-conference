@@ -155,31 +155,33 @@ html, body { overflow-x: clip; }
 #w27 .ppanel > .day-h:first-child { margin-top: 32px; }
 #w27 .note { margin-top: 24px; font-family: var(--mono); font-size: 13px; text-transform: uppercase; letter-spacing: .025em; color: var(--ink-soft); }
 
-/* Key dates: dark band with a horizontal timeline */
-#w27 .kdates { background-color: var(--navy-bar); background-image: linear-gradient(rgba(42,22,69,.86), rgba(42,22,69,.9)), url("https://dubai.acm.org/wp-content/uploads/2026/10/wicode27-art-wicode-dots.webp"); background-size: cover; background-position: center; color: #fff; }
+/* Key dates: tear-off calendar cards on lilac */
+#w27 .kdates { background: var(--blue-pale); border-top: 1px solid var(--rule); }
 #w27 .kdates .wrap { padding-top: 72px; padding-bottom: 80px; }
-#w27 .kd-h { margin-top: 8px; font-family: var(--display); font-size: 48px; font-weight: 500; line-height: 1; letter-spacing: -.025em; color: #fff; }
+#w27 .kd-top { display: flex; flex-wrap: wrap; align-items: flex-end; justify-content: space-between; gap: 20px; }
+#w27 .kd-top .k { font-family: var(--mono); font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: var(--brand); }
+#w27 .kd-h { margin-top: 6px; font-family: var(--serif); font-size: 48px; font-weight: 400; line-height: 1; color: #000; }
 @media (min-width: 640px) { #w27 .kd-h { font-size: 64px; } }
-#w27 .kd { position: relative; margin-top: 48px; display: grid; gap: 28px; }
-#w27 .kd::before { content: "" !important; display: block !important; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: rgba(255,255,255,.2); }
-#w27 .kd li { position: relative; padding-left: 40px; }
-#w27 .kd .dot { position: absolute; left: 0; top: 4px; width: 16px; height: 16px; border: 2px solid #b79ae0; background: var(--navy-bar); }
-#w27 .kd .day { font-family: var(--display); font-size: 56px; font-weight: 700; line-height: .9; letter-spacing: -.04em; color: #fff; }
-#w27 .kd .mon { margin-top: 6px; font-family: var(--mono); font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: #b79ae0; }
-#w27 .kd .what { margin-top: 12px; font-size: 15px; line-height: 1.5; color: rgba(255,255,255,.88); max-width: 32ch; }
-#w27 .kd .state { display: inline-block; margin-top: 14px; border: 1px solid rgba(255,255,255,.3); padding: 2px 8px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: #fff; }
-#w27 .kd li.done .dot { background: #b79ae0; }
-#w27 .kd li.done .day, #w27 .kd li.done .what { opacity: .55; }
-#w27 .kd li.done .state { background: #b79ae0; border-color: #b79ae0; color: var(--navy-bar); }
-#w27 .kd li.final .dot { background: #f0b35a; border-color: #f0b35a; }
-#w27 .kd li.final .day { color: #f0b35a; }
-#w27 .kd li.final .state { border-color: #f0b35a; color: #f0b35a; }
-@media (min-width: 1024px) {
-  #w27 .kd { grid-template-columns: repeat(6, minmax(0,1fr)); gap: 24px; padding-top: 36px; }
-  #w27 .kd::before { left: 0; right: 0; top: 7px; bottom: auto; width: auto; height: 2px; }
-  #w27 .kd li { padding-left: 0; }
-  #w27 .kd .dot { top: -36px; }
-}
+#w27 .kd-cal { display: inline-flex; align-items: center; gap: 10px; border: 1px solid #000; background: #fff; padding: 12px 18px; font-family: var(--condensed); font-size: 15px; font-weight: 700; text-transform: uppercase; letter-spacing: .025em; color: #000 !important; transition: background .15s, color .15s; }
+#w27 .kd-cal:hover { background: #000; color: #fff !important; }
+#w27 .kd-cal svg { width: 18px; height: 18px; }
+#w27 .kd { margin-top: 40px; display: grid; gap: 18px; grid-template-columns: repeat(2, minmax(0,1fr)); }
+@media (min-width: 768px) { #w27 .kd { grid-template-columns: repeat(3, minmax(0,1fr)); } }
+@media (min-width: 1200px) { #w27 .kd { grid-template-columns: repeat(6, minmax(0,1fr)); } }
+#w27 .kd li { position: relative; display: flex; flex-direction: column; background: #fff; border: 1px solid rgba(59,31,94,.18); }
+#w27 .kd li::after { content: ""; position: absolute; left: 14px; right: 14px; top: 34px; border-top: 2px dashed rgba(255,255,255,.55); }
+#w27 .kd .mon { background: var(--brand); padding: 10px 14px 16px; font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: #fff; }
+#w27 .kd .day { padding: 14px 14px 0; font-family: var(--display); font-size: 64px; font-weight: 700; line-height: .9; letter-spacing: -.05em; color: #000; }
+#w27 .kd .what { flex: 1; padding: 12px 14px 0; font-size: 14px; line-height: 1.45; color: var(--ink); }
+#w27 .kd .state { align-self: flex-start; margin: 14px; border: 1px solid var(--rule); padding: 2px 8px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); }
+#w27 .kd li.done { opacity: .6; }
+#w27 .kd li.done .mon { background: var(--ink-soft); }
+#w27 .kd li.done .state { background: var(--brand); border-color: var(--brand); color: #fff; }
+#w27 .kd li.final { border-color: #f0b35a; box-shadow: 6px 6px 0 #f0b35a; }
+#w27 .kd li.final .mon { background: #f0b35a; color: #000; }
+#w27 .kd li.final .day { color: var(--brand); }
+#w27 .kd li.final .state { border-color: #000; color: #000; }
+#w27 .kd-progress { margin-top: 28px; font-family: var(--mono); font-size: 13px; text-transform: uppercase; letter-spacing: .06em; color: var(--ink-soft); }
 
 /* Get involved, after Figma Config (the old WiCode 27 section) */
 #w27 .blob-field { background-color: var(--wicode); background-image: linear-gradient(90deg, rgba(46,16,101,.55) 0%, rgba(46,16,101,0) 70%), url("https://dubai.acm.org/wp-content/uploads/2026/10/wicode27-art-wicode-1.webp"); background-size: cover; background-position: center; }
@@ -539,19 +541,22 @@ html, body { overflow-x: clip; }
     </div>
   </section>
 
-  <!-- Key dates: dark timeline band -->
+  <!-- Key dates: calendar cards -->
   <section id="w27-dates-band" class="kdates">
     <div class="wrap">
-      <p class="eyebrow">Mark your calendar</p>
-      <h2 class="kd-h">Key dates</h2>
+      <div class="kd-top">
+        <div><p class="k">Mark your calendar</p><h2 class="kd-h">Key dates</h2></div>
+        <a class="kd-cal" href="https://calendar.google.com/calendar/render?action=TEMPLATE&amp;text=WiCoDE27%3A%20ACM%20Celebration%20of%20Women%20in%20Computing&amp;dates=20270407T043000Z%2F20270408T120000Z&amp;location=BITS%20Pilani%2C%20Dubai%20Campus%2C%20Dubai%20International%20Academic%20City&amp;details=Two%20days%20of%20mentoring%2C%20industry%20challenges%20and%20recognition.%20https%3A%2F%2Fdubai.acm.org%2Fevents%2F" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M7 2.6a1 1 0 0 1 1 1V5h8V3.6a1 1 0 1 1 2 0V5h1.4A1.6 1.6 0 0 1 21 6.6v2.1H3V6.6A1.6 1.6 0 0 1 4.6 5H6V3.6a1 1 0 0 1 1-1Z"/><path d="M3 10.3h18v9.1a1.6 1.6 0 0 1-1.6 1.6H4.6A1.6 1.6 0 0 1 3 19.4v-9.1Zm3 2.5v2.1h2.2v-2.1H6Zm4.9 0v2.1h2.2v-2.1h-2.2Zm4.9 0v2.1H18v-2.1h-2.2ZM6 17v2.1h2.2V17H6Zm4.9 0v2.1h2.2V17h-2.2Z"/></svg>Add WiCoDE27 to Google Calendar</a>
+      </div>
       <ol class="kd" id="w27-dates">
-        <li data-d="2026-11-15"><span class="dot" aria-hidden="true"></span><p class="day">15</p><p class="mon">Nov 2026</p><p class="what">ACM-W Scholars call opens</p><span class="state">Upcoming</span></li>
-        <li data-d="2026-12-01"><span class="dot" aria-hidden="true"></span><p class="day">1</p><p class="mon">Dec 2026</p><p class="what">Award nominations open</p><span class="state">Upcoming</span></li>
-        <li data-d="2027-01-15"><span class="dot" aria-hidden="true"></span><p class="day">15</p><p class="mon">Jan 2027</p><p class="what">ACM-W Scholars applications close; workshop proposals due</p><span class="state">Upcoming</span></li>
-        <li data-d="2027-02-01"><span class="dot" aria-hidden="true"></span><p class="day">1</p><p class="mon">Feb 2027</p><p class="what">Registration opens; Industry Challenge Sprint and video challenge begin</p><span class="state">Upcoming</span></li>
-        <li data-d="2027-02-28"><span class="dot" aria-hidden="true"></span><p class="day">28</p><p class="mon">Feb 2027</p><p class="what">Pitch to Industry abstracts, video entries and award nominations close</p><span class="state">Upcoming</span></li>
-        <li data-d="2027-04-08" class="final"><span class="dot" aria-hidden="true"></span><p class="day">7–8</p><p class="mon">Apr 2027</p><p class="what">WiCoDE27 at BITS Pilani, Dubai Campus</p><span class="state">Upcoming</span></li>
+        <li data-d="2026-11-15"><p class="mon">Nov 2026</p><p class="day">15</p><p class="what">ACM-W Scholars call opens</p><span class="state">Upcoming</span></li>
+        <li data-d="2026-12-01"><p class="mon">Dec 2026</p><p class="day">1</p><p class="what">Award nominations open</p><span class="state">Upcoming</span></li>
+        <li data-d="2027-01-15"><p class="mon">Jan 2027</p><p class="day">15</p><p class="what">ACM-W Scholars applications close; workshop proposals due</p><span class="state">Upcoming</span></li>
+        <li data-d="2027-02-01"><p class="mon">Feb 2027</p><p class="day">1</p><p class="what">Registration opens; Industry Challenge Sprint and video challenge begin</p><span class="state">Upcoming</span></li>
+        <li data-d="2027-02-28"><p class="mon">Feb 2027</p><p class="day">28</p><p class="what">Pitch to Industry abstracts, video entries and award nominations close</p><span class="state">Upcoming</span></li>
+        <li data-d="2027-04-08" class="final"><p class="mon">Apr 2027</p><p class="day">7–8</p><p class="what">WiCoDE27 at BITS Pilani, Dubai Campus</p><span class="state">The event</span></li>
       </ol>
+      <p class="kd-progress" id="w27-progress"></p>
     </div>
   </section>
 
@@ -868,12 +873,19 @@ html, body { overflow-x: clip; }
   var now = new Date();
 
   // Key dates: tag passed dates as completed.
-  root.querySelectorAll("#w27-dates li").forEach(function (li) {
+  var dates = root.querySelectorAll("#w27-dates li"), passed = 0;
+  dates.forEach(function (li) {
     if (new Date(li.getAttribute("data-d") + "T23:59:59+04:00") < now) {
       li.classList.add("done");
       li.querySelector(".state").textContent = "Completed";
+      passed++;
     }
   });
+  var prog = document.getElementById("w27-progress");
+  if (prog) {
+    var days = Math.ceil((Date.parse("2027-04-07T08:30:00+04:00") - now) / 86400000);
+    prog.textContent = passed + " of " + dates.length + " milestones done" + (days > 0 ? " · " + days + " days to WiCoDE27" : "");
+  }
 
   // Registration line follows the dates.
   var reg = document.getElementById("w27-regstatus");
@@ -913,9 +925,14 @@ html, body { overflow-x: clip; }
     hdr.style.top = off + "px";
     root.style.setProperty("--w27-offset", (off + 76) + "px");
   }
+  function schedule() { requestAnimationFrame(placeHeader); }
   placeHeader();
-  window.addEventListener("scroll", placeHeader, { passive: true });
-  window.addEventListener("resize", placeHeader);
+  window.addEventListener("scroll", schedule, { passive: true });
+  window.addEventListener("resize", schedule);
+  // The theme pins its bar by adding a class to <body>, sometimes after the
+  // scroll event; re-measure whenever that class list changes.
+  new MutationObserver(schedule).observe(document.body, { attributes: true, attributeFilter: ["class"] });
+  setTimeout(placeHeader, 400);
 
   // Close the mobile menu after picking a section.
   var menu = root.querySelector(".menu");
