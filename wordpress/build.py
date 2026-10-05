@@ -1,7 +1,7 @@
 """Build the WiCoDE27 block for WordPress.
 
   python3 build.py preview          -> dist/preview.html (local assets, mock WP layout)
-  python3 build.py wp media.json    -> dist/block.html   (asset paths swapped for WP media URLs)
+  python3 build.py wp media.json    -> wicode27-block.html (what goes into WordPress)
 """
 import json, re, sys, pathlib
 
@@ -27,5 +27,5 @@ else:
     media = json.loads(pathlib.Path(sys.argv[2]).read_text())  # {"art/hero.webp": "https://..."}
     out = re.sub(r"\{\{A\}\}/([\w/.-]+)", lambda m: media[m.group(1)], src)
     assert "{{A}}" not in out
-    (dist / "block.html").write_text("<!-- wp:html -->\n" + out + "\n<!-- /wp:html -->\n")
+    (here / "wicode27-block.html").write_text("<!-- wp:html -->\n" + out + "\n<!-- /wp:html -->\n")
 print("ok")
