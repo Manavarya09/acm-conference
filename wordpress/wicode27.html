@@ -42,7 +42,7 @@ html, body { overflow-x: clip; }
 #w27 .wrap { max-width: 1500px; margin: 0 auto; padding: 0 24px; }
 @media (min-width: 640px) { #w27 .wrap { padding: 0 48px; } }
 @media (min-width: 1024px) { #w27 .wrap { padding: 0 80px; } }
-#w27 section[id] { scroll-margin-top: 76px; }
+#w27 section[id] { scroll-margin-top: var(--w27-offset, 76px); }
 #w27 .ph { aspect-ratio: 1 / 1; width: 100%; overflow: hidden; background-color: #e6dff0; background-image: url("{{A}}/art/speaker-bg.webp"); background-size: cover; background-position: center; }
 #w27 .ph img { width: 100%; height: 100%; object-fit: cover; }
 #w27 .no-scrollbar { scrollbar-width: none; }
@@ -868,6 +868,21 @@ html, body { overflow-x: clip; }
       pick(next); next.focus();
     });
   });
+
+  // The theme pins its own menu bar to the top once the page scrolls; keep
+  // this page's header just below it so the two never overlap.
+  var hdr = root.querySelector(".hdr");
+  function placeHeader() {
+    var off = 0, bar = document.getElementById("wpadminbar");
+    if (bar && getComputedStyle(bar).position === "fixed") off = bar.offsetHeight;
+    var g = document.querySelector(".gMenu_outer");
+    if (g && getComputedStyle(g).position === "fixed" && g.offsetHeight) off = Math.max(off, g.getBoundingClientRect().bottom);
+    hdr.style.top = off + "px";
+    root.style.setProperty("--w27-offset", (off + 76) + "px");
+  }
+  placeHeader();
+  window.addEventListener("scroll", placeHeader, { passive: true });
+  window.addEventListener("resize", placeHeader);
 
   // Close the mobile menu after picking a section.
   var menu = root.querySelector(".menu");
