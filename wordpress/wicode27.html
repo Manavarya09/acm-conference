@@ -154,6 +154,32 @@ html, body { overflow-x: clip; }
 #w27 .ppanel > .day-h:first-child { margin-top: 32px; }
 #w27 .note { margin-top: 24px; font-family: var(--mono); font-size: 13px; text-transform: uppercase; letter-spacing: .025em; color: var(--ink-soft); }
 
+/* Key dates: dark band with a horizontal timeline */
+#w27 .kdates { background-color: var(--navy-bar); background-image: linear-gradient(rgba(42,22,69,.86), rgba(42,22,69,.9)), url("{{A}}/art/wicode-dots.webp"); background-size: cover; background-position: center; color: #fff; }
+#w27 .kdates .wrap { padding-top: 72px; padding-bottom: 80px; }
+#w27 .kd-h { margin-top: 8px; font-family: var(--display); font-size: 48px; font-weight: 500; line-height: 1; letter-spacing: -.025em; color: #fff; }
+@media (min-width: 640px) { #w27 .kd-h { font-size: 64px; } }
+#w27 .kd { position: relative; margin-top: 48px; display: grid; gap: 28px; }
+#w27 .kd::before { content: "" !important; display: block !important; position: absolute; left: 7px; top: 8px; bottom: 8px; width: 2px; background: rgba(255,255,255,.2); }
+#w27 .kd li { position: relative; padding-left: 40px; }
+#w27 .kd .dot { position: absolute; left: 0; top: 4px; width: 16px; height: 16px; border: 2px solid #b79ae0; background: var(--navy-bar); }
+#w27 .kd .day { font-family: var(--display); font-size: 56px; font-weight: 700; line-height: .9; letter-spacing: -.04em; color: #fff; }
+#w27 .kd .mon { margin-top: 6px; font-family: var(--mono); font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: #b79ae0; }
+#w27 .kd .what { margin-top: 12px; font-size: 15px; line-height: 1.5; color: rgba(255,255,255,.88); max-width: 32ch; }
+#w27 .kd .state { display: inline-block; margin-top: 14px; border: 1px solid rgba(255,255,255,.3); padding: 2px 8px; font-family: var(--mono); font-size: 11px; text-transform: uppercase; letter-spacing: .06em; color: #fff; }
+#w27 .kd li.done .dot { background: #b79ae0; }
+#w27 .kd li.done .day, #w27 .kd li.done .what { opacity: .55; }
+#w27 .kd li.done .state { background: #b79ae0; border-color: #b79ae0; color: var(--navy-bar); }
+#w27 .kd li.final .dot { background: #f0b35a; border-color: #f0b35a; }
+#w27 .kd li.final .day { color: #f0b35a; }
+#w27 .kd li.final .state { border-color: #f0b35a; color: #f0b35a; }
+@media (min-width: 1024px) {
+  #w27 .kd { grid-template-columns: repeat(6, minmax(0,1fr)); gap: 24px; padding-top: 36px; }
+  #w27 .kd::before { left: 0; right: 0; top: 7px; bottom: auto; width: auto; height: 2px; }
+  #w27 .kd li { padding-left: 0; }
+  #w27 .kd .dot { top: -36px; }
+}
+
 /* Get involved, after Figma Config (the old WiCode 27 section) */
 #w27 .blob-field { background-color: var(--wicode); background-image: linear-gradient(90deg, rgba(46,16,101,.55) 0%, rgba(46,16,101,0) 70%), url("{{A}}/art/wicode.webp"); background-size: cover; background-position: center; }
 #w27 .blob-field .wrap { padding-top: 80px; padding-bottom: 80px; }
@@ -509,15 +535,21 @@ html, body { overflow-x: clip; }
 
       <p class="note">The programme may change. The final programme will be published on 20 March 2027.</p>
 
-      <h3 class="day-h" style="margin-top:80px"><small>Mark your calendar</small>Key dates</h3>
-      <div class="thead"><span>Date</span><span>Milestone</span><span></span></div>
-      <ol class="rows" id="w27-dates">
-        <li data-d="2026-11-15"><div class="t"><p>15 Nov 2026</p><span class="tag">Upcoming</span></div><p class="s">ACM-W Scholars call opens</p><span></span></li>
-        <li data-d="2026-12-01"><div class="t"><p>1 Dec 2026</p><span class="tag">Upcoming</span></div><p class="s">Award nominations open</p><span></span></li>
-        <li data-d="2027-01-15"><div class="t"><p>15 Jan 2027</p><span class="tag">Upcoming</span></div><p class="s">ACM-W Scholars applications close; workshop proposals due</p><span></span></li>
-        <li data-d="2027-02-01"><div class="t"><p>1 Feb 2027</p><span class="tag">Upcoming</span></div><p class="s">Registration opens; Industry Challenge Sprint and video challenge begin</p><span></span></li>
-        <li data-d="2027-02-28"><div class="t"><p>28 Feb 2027</p><span class="tag">Upcoming</span></div><p class="s">Pitch to Industry abstracts, video entries and award nominations close</p><span></span></li>
-        <li data-d="2027-04-08"><div class="t"><p>7–8 Apr 2027</p><span class="tag">Upcoming</span></div><p class="s">WiCoDE27 at BITS Pilani, Dubai Campus</p><span></span></li>
+    </div>
+  </section>
+
+  <!-- Key dates: dark timeline band -->
+  <section id="w27-dates-band" class="kdates">
+    <div class="wrap">
+      <p class="eyebrow">Mark your calendar</p>
+      <h2 class="kd-h">Key dates</h2>
+      <ol class="kd" id="w27-dates">
+        <li data-d="2026-11-15"><span class="dot" aria-hidden="true"></span><p class="day">15</p><p class="mon">Nov 2026</p><p class="what">ACM-W Scholars call opens</p><span class="state">Upcoming</span></li>
+        <li data-d="2026-12-01"><span class="dot" aria-hidden="true"></span><p class="day">1</p><p class="mon">Dec 2026</p><p class="what">Award nominations open</p><span class="state">Upcoming</span></li>
+        <li data-d="2027-01-15"><span class="dot" aria-hidden="true"></span><p class="day">15</p><p class="mon">Jan 2027</p><p class="what">ACM-W Scholars applications close; workshop proposals due</p><span class="state">Upcoming</span></li>
+        <li data-d="2027-02-01"><span class="dot" aria-hidden="true"></span><p class="day">1</p><p class="mon">Feb 2027</p><p class="what">Registration opens; Industry Challenge Sprint and video challenge begin</p><span class="state">Upcoming</span></li>
+        <li data-d="2027-02-28"><span class="dot" aria-hidden="true"></span><p class="day">28</p><p class="mon">Feb 2027</p><p class="what">Pitch to Industry abstracts, video entries and award nominations close</p><span class="state">Upcoming</span></li>
+        <li data-d="2027-04-08" class="final"><span class="dot" aria-hidden="true"></span><p class="day">7–8</p><p class="mon">Apr 2027</p><p class="what">WiCoDE27 at BITS Pilani, Dubai Campus</p><span class="state">Upcoming</span></li>
       </ol>
     </div>
   </section>
@@ -838,7 +870,7 @@ html, body { overflow-x: clip; }
   root.querySelectorAll("#w27-dates li").forEach(function (li) {
     if (new Date(li.getAttribute("data-d") + "T23:59:59+04:00") < now) {
       li.classList.add("done");
-      li.querySelector(".tag").textContent = "Completed";
+      li.querySelector(".state").textContent = "Completed";
     }
   });
 
