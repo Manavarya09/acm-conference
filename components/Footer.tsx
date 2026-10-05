@@ -7,11 +7,8 @@ export default function Footer() {
       <div className="mx-auto max-w-[1200px] px-6 sm:px-12 lg:px-20 py-12">
         <div className="flex flex-wrap items-center gap-x-8 gap-y-6">
           <div className="flex items-center gap-3">
-            <span
-              aria-hidden
-              className="grid h-10 w-10 place-items-center rounded-sm bg-white font-condensed text-sm font-bold text-navy"
-            >
-              W
+            <span className="grid h-10 w-10 place-items-center rounded-sm bg-white">
+              <Image src="/logos/wicode27-mark.webp" alt="WiCoDE27 logo" width={32} height={32} />
             </span>
             <span className="font-condensed text-[22px] font-medium leading-[1.05] text-white">
               {org.name}

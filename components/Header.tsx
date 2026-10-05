@@ -1,3 +1,4 @@
+import Image from "next/image";
 import {
   HomeIcon,
   IdCardIcon,
@@ -79,12 +80,14 @@ export default function Header() {
         <div className="mx-auto flex h-[76px] max-w-[1500px] items-center gap-6 px-6 sm:px-12 lg:px-20">
           {/* Mark — placeholder for the chapter's own logo. */}
           <a href="#top" className="flex shrink-0 items-center gap-3">
-            <span
-              aria-hidden
-              className="grid h-11 w-11 place-items-center rounded-sm bg-navy font-condensed text-base font-bold text-white"
-            >
-              W
-            </span>
+            <Image
+              src="/logos/wicode27-mark.webp"
+              alt="WiCoDE27 logo"
+              width={44}
+              height={44}
+              preload
+              className="h-11 w-11"
+            />
             <span className="font-condensed text-[21px] font-medium leading-[1.02] tracking-tight text-navy">
               {brand.name}
               <span className="block text-[15px] font-normal text-ink-soft">
