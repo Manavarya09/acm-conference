@@ -146,6 +146,13 @@ html, body { overflow-x: clip; }
 #w27 .rows .s.brk { font-size: 20px; letter-spacing: 0; color: var(--ink-soft); }
 #w27 .rows .d { font-family: var(--mono); font-size: 13px; text-transform: uppercase; line-height: 1.5; letter-spacing: .025em; color: var(--ink); }
 #w27 .rows li.done .tag { background: var(--brand); border-color: var(--brand); color: #fff; }
+#w27 .ptabs { margin-top: 40px; display: flex; flex-wrap: wrap; gap: 6px; border-bottom: 2px solid var(--navy); }
+#w27 .ptab { cursor: pointer; border: 0; border-radius: 0; background: #ece6f4; padding: 14px 20px; text-align: left; font-family: var(--condensed); font-size: 17px; font-weight: 700; text-transform: uppercase; letter-spacing: .025em; line-height: 1.2; color: var(--navy); }
+#w27 .ptab small { display: block; margin-top: 3px; font-family: var(--mono); font-size: 12px; font-weight: 400; text-transform: none; letter-spacing: 0; }
+#w27 .ptab:hover { background: var(--blue-pale); }
+#w27 .ptab[aria-selected="true"] { background: var(--brand); color: #fff; }
+#w27 .ppanel[hidden] { display: none; }
+#w27 .ppanel > .day-h:first-child { margin-top: 32px; }
 #w27 .note { margin-top: 24px; font-family: var(--mono); font-size: 13px; text-transform: uppercase; letter-spacing: .025em; color: var(--ink-soft); }
 
 /* Get involved, after Figma Config (the old WiCode 27 section) */
@@ -445,6 +452,12 @@ html, body { overflow-x: clip; }
     <div class="wrap">
       <h2 class="big">Programme</h2>
 
+      <div class="ptabs" role="tablist" aria-label="Programme days">
+        <button class="ptab" role="tab" id="w27-t1" aria-controls="w27-p1" aria-selected="true">Day 1<small>Wed 7 April · Scholars’ Cohort</small></button>
+        <button class="ptab" role="tab" id="w27-t2" aria-controls="w27-p2" aria-selected="false" tabindex="-1">Day 2<small>Thu 8 April · Celebration</small></button>
+        <button class="ptab" role="tab" id="w27-t3" aria-controls="w27-p3" aria-selected="false" tabindex="-1">International Programme<small>Scholars and speakers</small></button>
+      </div>
+      <div class="ppanel" role="tabpanel" id="w27-p1" aria-labelledby="w27-t1">
       <h3 class="day-h"><small>Day 1 · Wednesday 7 April 2027</small>ACM-W Scholars’ Cohort</h3>
       <div class="thead"><span>Time</span><span>Session</span><span>Speakers and details</span></div>
       <ol class="rows">
@@ -463,6 +476,9 @@ html, body { overflow-x: clip; }
         <li><div class="t"><p>16:45</p><span class="tag">Break</span></div><p class="s brk">Close, high tea and networking</p><span></span></li>
       </ol>
 
+      </div>
+
+      <div class="ppanel" role="tabpanel" id="w27-p2" aria-labelledby="w27-t2" hidden>
       <h3 class="day-h"><small>Day 2 · Thursday 8 April 2027</small>WiCoDE27 Celebration</h3>
       <div class="thead"><span>Time</span><span>Session</span><span>Speakers and details</span></div>
       <ol class="rows">
@@ -481,12 +497,17 @@ html, body { overflow-x: clip; }
         <li><div class="t"><p>16:00</p><span class="tag">Talk</span></div><p class="s">Closing remarks and vote of thanks</p><span></span></li>
       </ol>
 
+      </div>
+
+      <div class="ppanel" role="tabpanel" id="w27-p3" aria-labelledby="w27-t3" hidden>
       <h3 class="day-h"><small>For ACM-W Scholars and speakers</small>International Programme</h3>
       <div class="thead"><span>Date and time</span><span>Activity</span><span></span></div>
       <ol class="rows">
         <li><div class="t"><p>Tue 6 April 2027</p><span class="tag">18:30 to 20:30</span></div><p class="s">Welcome reception</p><span></span></li>
         <li><div class="t"><p>Fri 9 April 2027</p><span class="tag">09:00 to 11:30</span></div><p class="s">Industry and innovation visit in Dubai</p><span></span></li>
       </ol>
+      </div>
+
       <p class="note">The programme may change. The final programme will be published on 20 March 2027.</p>
 
       <h3 class="day-h" style="margin-top:80px"><small>Mark your calendar</small>Key dates</h3>
@@ -828,6 +849,26 @@ html, body { overflow-x: clip; }
     if (now >= new Date("2027-04-01T00:00:00+04:00")) reg.textContent = "Registration is closed.";
     else if (now >= new Date("2027-02-01T00:00:00+04:00")) reg.textContent = "Registration is open until 31 March 2027. It is free, and places are limited.";
   }
+
+  // Programme tabs, with arrow-key support.
+  var tabs = Array.prototype.slice.call(root.querySelectorAll('.ptab'));
+  function pick(tab) {
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+    });
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener("click", function () { pick(t); });
+    t.addEventListener("keydown", function (e) {
+      var j = e.key === "ArrowRight" ? i + 1 : e.key === "ArrowLeft" ? i - 1 : null;
+      if (j === null) return;
+      var next = tabs[(j + tabs.length) % tabs.length];
+      pick(next); next.focus();
+    });
+  });
 
   // Close the mobile menu after picking a section.
   var menu = root.querySelector(".menu");
