@@ -924,13 +924,20 @@ html, body { overflow-x: clip; }
     hdr.style.top = off + "px";
     root.style.setProperty("--w27-offset", (off + 76) + "px");
   }
-  function schedule() { requestAnimationFrame(placeHeader); }
+  var settle;
+  function schedule() {
+    requestAnimationFrame(placeHeader);
+    // The theme slides its bar in; measure again once that animation ends.
+    clearTimeout(settle); settle = setTimeout(placeHeader, 450);
+  }
   placeHeader();
   window.addEventListener("scroll", schedule, { passive: true });
   window.addEventListener("resize", schedule);
   // The theme pins its bar by adding a class to <body>, sometimes after the
   // scroll event; re-measure whenever that class list changes.
   new MutationObserver(schedule).observe(document.body, { attributes: true, attributeFilter: ["class"] });
+  var gbar = document.querySelector(".gMenu_outer");
+  if (gbar) gbar.addEventListener("transitionend", placeHeader);
   setTimeout(placeHeader, 400);
 
   // Close the mobile menu after picking a section.
