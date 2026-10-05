@@ -124,22 +124,24 @@ export const utilityLinks = [
   "Volunteers",
 ];
 
-export type Person = { name: string; role: string; affiliation?: string };
+/** `photo` is a square image in public/people/; without one the card shows a backdrop. */
+export type Person = { name: string; role: string; affiliation?: string; photo?: string };
 
 /** ACM-W leaders. */
 export const expertPanel: Person[] = [
-  { name: "Prof Bimlesh Wadhwa", role: "ACM-W Asia Pacific Chair", affiliation: "NUS, Singapore" },
-  { name: "Dr Rukiye Altin", role: "ACM-W Global Chair", affiliation: "Kiel University, Germany" },
-  { name: "Dr Arati Dixit", role: "ACM-W Chair, Regional Activities", affiliation: "North Carolina University" },
+  { name: "Prof Bimlesh Wadhwa", photo: "/people/wadhwa.webp", role: "ACM-W Asia Pacific Chair", affiliation: "NUS, Singapore" },
+  { name: "Dr Rukiye Altin", photo: "/people/altin.webp", role: "ACM-W Global Chair", affiliation: "Kiel University, Germany" },
+  { name: "Dr Arati Dixit", photo: "/people/dixit.webp", role: "ACM-W Chair, Regional Activities", affiliation: "North Carolina University" },
   { name: "Dr Leyla Atakan", role: "ACM-W Chair", affiliation: "Bilkent, Turkey" },
-  { name: "Dr Dorota Filipczuk", role: "ACM-W Chair, Europe", affiliation: "Microsoft" },
+  { name: "Dr Dorota Filipczuk", photo: "/people/filipczuk.webp", role: "ACM-W Chair, Europe", affiliation: "Microsoft" },
 ];
 
 /** More names to come from the organisers. */
 export const industryPanel: Person[] = [
-  { name: "Dr Rathan M", role: "Senior Director of Artificial Intelligence", affiliation: "Exalogic Consulting, Dubai" },
+  { name: "Dr Rathan M", photo: "/people/rathan.webp", role: "Senior Director of Artificial Intelligence", affiliation: "Exalogic Consulting, Dubai" },
   {
     name: "Gowri Shankar Sivabala",
+    photo: "/people/sivabala.webp",
     role: "Ethical AI Consultant; Founder, AI and Quantum International Hub (AIQUAINT)",
     affiliation: "UAE",
   },
@@ -151,8 +153,8 @@ export const organisingChapters: { name: string; logo?: string }[] = [
 ];
 
 export const organisers: Person[] = [
-  { name: "Prof Elakkiya Rajasekar", role: "Chair, ACM-W Dubai Professional Chapter", affiliation: "BPDC" },
-  { name: "Prof Angel Arul Jothi", role: "Chair, ACM Dubai Professional Chapter", affiliation: "BPDC" },
+  { name: "Prof Elakkiya Rajasekar", photo: "/people/rajasekar.webp", role: "Chair, ACM-W Dubai Professional Chapter", affiliation: "BPDC" },
+  { name: "Prof Angel Arul Jothi", photo: "/people/jothi.webp", role: "Chair, ACM Dubai Professional Chapter", affiliation: "BPDC" },
 ];
 
 /** Names as the chapters write them on their own pages, where found. */

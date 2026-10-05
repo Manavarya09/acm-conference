@@ -30,6 +30,18 @@ import {
 
 const wrap = "mx-auto max-w-[1500px] px-6 sm:px-12 lg:px-20";
 
+/* Big square headshot; the lavender backdrop stands in until a photo arrives. */
+function Headshot({ person, sizes }: { person: Person; sizes: string }) {
+  if (!person.photo) {
+    return <div aria-hidden className="photo-placeholder aspect-square w-full" />;
+  }
+  return (
+    <div className="relative aspect-square w-full overflow-hidden bg-grey-soft">
+      <Image src={person.photo} alt={person.name} fill sizes={sizes} className="object-cover" />
+    </div>
+  );
+}
+
 /* Speakers, after Grace Hopper Celebration: serif heading, "See all" link,
    large photo cards in a row that scrolls sideways. */
 function SpeakerRow({ title, people }: { title: string; people: Person[] }) {
@@ -43,7 +55,7 @@ function SpeakerRow({ title, people }: { title: string; people: Person[] }) {
       <ul className="no-scrollbar mt-7 flex snap-x gap-6 overflow-x-auto pb-2">
         {people.map((p) => (
           <li key={p.name} className="w-[280px] shrink-0 snap-start">
-            <div aria-hidden className="photo-placeholder aspect-square w-full" />
+            <Headshot person={p} sizes="280px" />
             <p className="mt-3 font-display text-[17px] font-semibold leading-snug text-black">
               {p.name}
             </p>
@@ -301,7 +313,7 @@ export default function EventPage() {
             <ul className="flex flex-wrap gap-6">
               {organisers.map((p) => (
                 <li key={p.name} className="w-[260px] bg-white p-4">
-                  <span aria-hidden className="photo-placeholder block aspect-square w-full" />
+                  <Headshot person={p} sizes="228px" />
                   <span className="mt-3 block text-[16px] font-semibold leading-tight text-navy">
                     {p.name}
                   </span>
