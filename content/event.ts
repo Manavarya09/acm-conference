@@ -1,12 +1,14 @@
 /**
- * All copy for the page. Every value is placeholder lorem ipsum —
- * swap these for real event content and no component needs to change.
+ * All copy for the page. Speaker, organiser and chapter details come from the
+ * conference organisers; anything still marked "to be announced" is waiting
+ * on them. Edit this file and no component needs to change.
  */
 
 export const org = {
-  name: "Lorem Ipsum",
-  sub: "University",
-  region: "Lorem Ipsum Dolor",
+  name: "ACM-W Dubai Professional Chapter",
+  sub: "with ACM Dubai Professional Chapter",
+  region: "BITS Pilani, Dubai Campus",
+  regionHref: "https://www.bits-pilani.ac.in/dubai/",
 };
 
 /** Two-line lockup shown beside the mark in the header. */
@@ -14,18 +16,18 @@ export const brand = { name: "Women in Computing", sub: "Conference" };
 
 export const event = {
   title: "Women in Computing Conference",
-  tags: ["Lorem-Ipsum Student Chapter", "Face-To-Face", "Conference"],
-  date: "Tuesday, 02 Lorem 2026",
-  time: "9 AM - 5 PM (IPSM)",
+  tags: ["ACM-W Dubai Professional Chapter", "Face-To-Face", "Conference"],
+  date: "Date to be announced",
+  time: "9 AM - 5 PM (GST)",
   price: "Paid",
   tagline: "Talks, two expert panels and a hackathon for women in computing.",
 };
 
 export const intro = [
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat, duis aute irure dolor in reprehenderit voluptate velit esse cillum.",
-  "Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem aperiam eaque ipsa quae ab illo inventore veritatis et quasi architecto.",
-  "Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui dolorem ipsum quia dolor sit amet consectetur adipisci velit sed quia non numquam eius modi tempora.",
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Places are limited, so registration is required to secure your spot.",
+  "The Women in Computing Conference brings students, researchers and professionals together at BITS Pilani, Dubai Campus for a day of talks, panels and hands-on building. It is organised by the ACM-W Dubai Professional Chapter and the ACM Dubai Professional Chapter, with student chapters from universities across Dubai.",
+  "ACM-W leaders from Asia Pacific, Europe and around the world join us to share how their careers and research took shape, and how the global ACM-W community supports women at every stage of a computing career.",
+  "Industry experts from Dubai and the wider UAE bring the view from practice, from building AI products to the ethics of AI and the arrival of quantum technologies. Alongside the talks, WiCode 27 gives teams the day to build and present their own prototypes.",
+  "Places are limited, so registration is required to secure your spot.",
 ];
 
 export type SessionType = "Keynote" | "Panel" | "Talk" | "WiCode" | "Break";
@@ -37,19 +39,18 @@ export type AgendaItem = {
   detail?: string;
 };
 
+/** Draft running order. Times and session leads are still to be confirmed. */
 export const agenda: AgendaItem[] = [
-  { time: "9.00am", type: "Break", title: "Lorem Ipsum & Refreshments" },
+  { time: "9.00am", type: "Break", title: "Registration & Refreshments" },
   {
     time: "9.30am", type: "Talk",
     title: "Welcome address",
-    detail:
-      "A/Prof. Lorem Ipsum, Faculty Advisor of Dolor Sit Amet Student Chapter and Director of Consectetur, Faculty of Adipiscing",
+    detail: "From the organising chapters, ACM-W Dubai and ACM Dubai",
   },
   {
     time: "9.45am", type: "Keynote",
     title: "Keynote speech",
-    detail:
-      "Prof. Dolor Consectetur, Associate Dean (Elit) and Director of Lorem Ipsum Institute",
+    detail: "Speaker to be announced",
   },
   {
     time: "10.15am", type: "WiCode",
@@ -57,21 +58,15 @@ export const agenda: AgendaItem[] = [
     detail: "Problem statements released; hackathon teams start building",
   },
   {
-    time: "10.30am", type: "Talk",
-    title: "Invited Talk",
-    detail: "Dr Adipiscing Elit - Sed Do Eiusmod: Tempor, Incididunt and the Case for Labore",
-  },
-  {
     time: "11.00am", type: "Panel",
-    title: "Industry Panel",
-    detail:
-      "How lorem and ipsum are shaping the future of dolor in the age of consectetur",
+    title: "Industry Expert Panel",
+    detail: "AI in practice, ethical AI and quantum technologies in the UAE",
   },
   { time: "12.00pm", type: "Break", title: "Lunch" },
   {
     time: "1.00pm", type: "Panel",
-    title: "Academic Panel",
-    detail: "Panel discussion on research pathways and future opportunities",
+    title: "ACM-W Expert Panel",
+    detail: "ACM-W chairs from Asia Pacific, Europe and the global committee on research pathways and building a computing career",
   },
   {
     time: "1.45pm", type: "WiCode",
@@ -81,32 +76,35 @@ export const agenda: AgendaItem[] = [
   {
     time: "2.30pm", type: "Talk",
     title: "One-on-One Career Consultations",
-    detail: "Students meet individually with lorem and/or ipsum experts",
+    detail: "Students meet individually with the academic and industry experts",
   },
   {
     time: "4.00pm", type: "Talk",
-    title: "Remarks from Lorem Ipsum",
-    detail: "A/Prof. Consectetur Adipiscing - Lorem Ipsum Asia Pacific Regional Chair",
+    title: "Remarks from ACM-W",
+    detail: "ACM-W regional and global leadership",
   },
   {
-    time: "4.12pm", type: "Talk",
-    title: "Remarks from the Dolor Committee, Faculty of Ipsum",
-    detail: "Prof. Sed Eiusmod, Associate Dean (Tempor, Incididunt & Labore)",
+    time: "4.15pm", type: "Talk",
+    title: "Student Chapter Showcase",
+    detail: "Short updates from the participating ACM and ACM-W student chapters",
   },
-  { time: "4.19pm", type: "Talk", title: "Remarks from Magna Aliqua Chapter" },
-  { time: "4.24pm", type: "Talk", title: "Remarks from University of Veniam Student Chapter" },
-  {
-    time: "4.30pm", type: "Talk",
-    title: "Closing Remarks",
-    detail: "A/Prof. Quis Nostrud, Associate Dean (Graduate Exercitation), Faculty of Ipsum",
-  },
+  { time: "4.30pm", type: "Talk", title: "WiCode 27 Results & Closing Remarks" },
   { time: "4.45pm", type: "Talk", title: "Vote of Thanks" },
   { time: "5.00pm onwards", type: "Break", title: "Networking & Refreshments" },
 ];
 
-export const utilityCentre = ["Lorem", "Ipsum Online", "Library", "Donate"];
+/** External sites; these open in a new tab. */
+export const utilityCentre = [
+  { label: "ACM BITS Dubai", href: "https://www.acmbpdc.org/" },
+  { label: "ACM-W BITS Dubai", href: "https://www.linkedin.com/company/acmw-bpdc/" },
+  { label: "BITS Pilani Dubai", href: org.regionHref },
+];
 
-export const utilityRight = ["Staff", "Students", "Alumni"];
+export const utilityRight = [
+  { label: "Speakers", href: "#speakers" },
+  { label: "Students", href: "#scholars" },
+  { label: "Chapters", href: "#committee" },
+];
 
 export const sectionNav = [
   { label: "About", href: "#about" },
@@ -118,44 +116,54 @@ export const sectionNav = [
 ];
 
 export const utilityLinks = [
-  "Alumni",
-  "Current Students",
-  "Future Students",
-  "Education",
-  "Industry and Community",
-  "Research",
+  "Students",
+  "Researchers",
+  "Industry",
+  "Student Chapters",
+  "WiCode 27",
+  "Volunteers",
 ];
 
-export type Person = { name: string; role: string };
+export type Person = { name: string; role: string; affiliation?: string };
 
+/** ACM-W leaders. */
+export const expertPanel: Person[] = [
+  { name: "Prof Bimlesh Wadhwa", role: "ACM-W Asia Pacific Chair", affiliation: "NUS, Singapore" },
+  { name: "Dr Rukiye Altin", role: "ACM-W Global Chair", affiliation: "Kiel University, Germany" },
+  { name: "Dr Arati Dixit", role: "ACM-W Chair, Regional Activities", affiliation: "North Carolina University" },
+  { name: "Dr Leyla Atakan", role: "ACM-W Chair", affiliation: "Bilkent, Turkey" },
+  { name: "Dr Dorota Filipczuk", role: "ACM-W Chair, Europe", affiliation: "Microsoft" },
+];
+
+/** More names to come from the organisers. */
 export const industryPanel: Person[] = [
-  { name: "Professor Lorem Ipsum", role: "Associate Dean (Consectetur) and Director, Adipiscing Institute" },
-  { name: "Professor Dolor Sit", role: "Senior Deputy Dean, Deputy Dean (Elit & Operations)" },
-  { name: "Professor Amet Consectetur", role: "Associate Dean (Eiusmod, Tempor & Incididunt)" },
-  { name: "Dr Adipiscing Elit", role: "Research Fellow, Centre for Lorem Natural User Interfaces" },
-  { name: "Sed Eiusmod Tempor", role: "Product Owner, Ipsum Ecosystem Community, Dolor Bank of Lorem" },
-  { name: "Professor Magna Aliqua", role: "Professor (Practice)" },
+  { name: "Dr Rathan M", role: "Senior Director of Artificial Intelligence", affiliation: "Exalogic Consulting, Dubai" },
+  {
+    name: "Gowri Shankar Sivabala",
+    role: "Ethical AI Consultant; Founder, AI and Quantum International Hub (AIQUAINT)",
+    affiliation: "UAE",
+  },
 ];
 
-export const academicPanel: Person[] = [
-  { name: "Professor Enim Minim", role: "Director, Lorem Informatics Hub; Discipline Lead, Ipsum" },
-  { name: "Professor Quis Nostrud", role: "Head of Department (LRM)" },
-  { name: "Dr Ullamco Laboris", role: "Exercitation University" },
-  { name: "Associate Professor Nisi Aliquip", role: "National University of Commodo" },
-  { name: "Dr Consequat Duis", role: "Lorem Ipsum University Dolor" },
-  { name: "Professor Aute Irure", role: "Professor (Practice)" },
+export const organisingChapters: { name: string; logo?: string }[] = [
+  { name: "ACM-W Dubai Professional Chapter" },
+  { name: "ACM Dubai Professional Chapter", logo: "/logos/acm-dubai.png" },
 ];
 
-export type CommitteeGroup = { role: string; members: string[] };
-
-export const committee: CommitteeGroup[] = [
-  { role: "Conference Chairs", members: ["Reprehenderit Vol", "Velit Esse"] },
-  { role: "Programme", members: ["Cillum Dolore", "Fugiat Nulla", "Pariatur Excepteur"] },
-  { role: "WiCode 27", members: ["Sint Occaecat", "Cupidatat Proident"] },
-  { role: "Outreach & Logistics", members: ["Culpa Officia", "Deserunt Mollit", "Anim Laborum"] },
+export const organisers: Person[] = [
+  { name: "Prof Elakkiya Rajasekar", role: "Chair, ACM-W Dubai Professional Chapter", affiliation: "BPDC" },
+  { name: "Prof Angel Arul Jothi", role: "Chair, ACM Dubai Professional Chapter", affiliation: "BPDC" },
 ];
 
-export const partner = "Lorem Ipsum Dolor";
+/** Names as the chapters write them on their own pages, where found. */
+export const studentChapters: { name: string; logo?: string; darkLogo?: boolean }[] = [
+  { name: "ACM-W BITS Pilani, Dubai", logo: "/logos/acmw-bpdc.jpg" },
+  { name: "Symbiosis ACM-W Student Chapter" },
+  { name: "ACM BITS Pilani Dubai Student Chapter", logo: "/logos/acm-bpdc.png" },
+  { name: "UoBD ACM Student Chapter", logo: "/logos/acm-uobd.png", darkLogo: true },
+  { name: "ACM Student Chapter MAHE Dubai" },
+  { name: "ACM Student Chapter Amity Dubai" },
+];
 
 export const venue = {
   mapHref: "https://www.google.com/maps/search/?api=1&query=BITS+Pilani+Dubai+Campus",
@@ -165,6 +173,8 @@ export const venue = {
     "Dubai International Academic City",
     "Dubai, United Arab Emirates",
   ],
+  directions:
+    "The campus is in Dubai International Academic City, off Al Ain Road (E66). Visitor parking is available on campus; arrival details will be shared with registered attendees.",
 };
 
 /** WiCode 27 has its own website; this page only links out to it. */
@@ -172,33 +182,16 @@ export const wicode = {
   name: "WiCode 27",
   summary:
     "The hackathon that runs alongside the conference. Registration, teams, rules and key dates are all on the WiCode 27 website.",
-  url: "#", // Replace with the WiCode 27 website address.
+  url: "https://wicode-pearl.vercel.app/",
 };
-
-export type Scholar = { name: string; institution: string };
 
 export const scholarIntro =
-  "Lorem ipsum dolor sit amet, consectetur adipiscing elit. Each year a cohort of students is funded to attend, present their work and join a mentoring programme with the speakers.";
-
-export const scholars: Scholar[] = [
-  { name: "Lorem Ipsum", institution: "Dolor University" },
-  { name: "Sit Amet", institution: "Consectetur Institute" },
-  { name: "Adipiscing Elit", institution: "Dolor University" },
-  { name: "Sed Eiusmod", institution: "Tempor College" },
-  { name: "Incididunt Labore", institution: "Magna University" },
-  { name: "Aliqua Veniam", institution: "Consectetur Institute" },
-];
-
-export const scholarQuote = {
-  text: "Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.",
-  name: "Quis Nostrud",
-  cohort: "Previous scholar",
-};
+  "Each year a cohort of students is funded to attend, present their work and join a mentoring programme with the speakers. Applications open alongside registration, and this year's cohort will be announced here.";
 
 export const getInvolved = [
   {
     title: "Attend",
-    text: "Lorem ipsum dolor sit amet. Register to hear both panels, meet the scholars and join the networking session.",
+    text: "Register to hear both expert panels, meet the speakers and join the networking session.",
     cta: "Register now",
     href: "#",
   },
@@ -210,7 +203,7 @@ export const getInvolved = [
   },
   {
     title: "Become a scholar",
-    text: "Sed do eiusmod tempor. Apply for a funded place in next year's scholar cohort.",
+    text: "Apply for a funded place in the scholar cohort, with mentoring from the speakers.",
     cta: "Apply",
     href: "#",
   },
@@ -219,11 +212,11 @@ export const getInvolved = [
 export const faq = [
   {
     q: "Who can attend?",
-    a: "Lorem ipsum dolor sit amet. The conference is open to students, researchers and professionals.",
+    a: "The conference is open to students, researchers and professionals. Everyone is welcome; the programme is designed around women in computing.",
   },
   {
     q: "How much does it cost?",
-    a: "Consectetur adipiscing elit. Ticket prices will be announced when registration opens.",
+    a: "Ticket prices will be announced when registration opens.",
   },
   {
     q: "Where do I register for WiCode 27?",
@@ -231,7 +224,11 @@ export const faq = [
   },
   {
     q: "How do I apply for the scholar cohort?",
-    a: "Incididunt ut labore. Applications open alongside registration; details to be added.",
+    a: "Applications open alongside registration. Details will be posted on this page.",
+  },
+  {
+    q: "Can my student chapter take part?",
+    a: "Yes. ACM and ACM-W student chapters across the UAE are welcome to join; contact the ACM-W Dubai Professional Chapter.",
   },
 ];
 

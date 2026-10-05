@@ -1,10 +1,8 @@
 import {
-  ChevronDownIcon,
   HomeIcon,
   IdCardIcon,
   MortarboardIcon,
   PeopleIcon,
-  SearchIcon,
 } from "@/components/icons";
 import {
   brand,
@@ -31,21 +29,29 @@ export default function Header() {
       <div className="bg-utility text-white">
         <div className="mx-auto flex h-[52px] max-w-[1500px] items-center gap-6 px-6 sm:px-12 lg:px-20">
           <div className="flex shrink-0 items-center gap-5">
-            <HomeIcon className="h-[19px] w-[19px]" />
-            <button
-              type="button"
-              className="flex items-center gap-2 text-[16px]"
+            <a href="#top" aria-label="Back to top">
+              <HomeIcon className="h-[19px] w-[19px]" />
+            </a>
+            <a
+              href={org.regionHref}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[16px] hover:underline"
             >
               {org.region}
-              <ChevronDownIcon />
-            </button>
+            </a>
           </div>
 
           <ul className="hidden flex-1 justify-center gap-8 text-[16px] lg:flex">
             {utilityCentre.map((item) => (
-              <li key={item}>
-                <a href="#" className="hover:underline">
-                  {item}
+              <li key={item.label}>
+                <a
+                  href={item.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="whitespace-nowrap hover:underline"
+                >
+                  {item.label}
                 </a>
               </li>
             ))}
@@ -56,18 +62,15 @@ export default function Header() {
               const Icon = rightIcons[i];
               return (
                 <a
-                  key={item}
-                  href="#"
-                  className="hidden items-center gap-2 text-[15px] uppercase tracking-wide lg:flex"
+                  key={item.label}
+                  href={item.href}
+                  className="hidden items-center gap-2 text-[15px] uppercase tracking-wide hover:underline lg:flex"
                 >
                   <Icon className="h-5 w-5" />
-                  {item}
+                  {item.label}
                 </a>
               );
             })}
-            <button type="button" aria-label="Search">
-              <SearchIcon className="h-[21px] w-[21px]" />
-            </button>
           </div>
         </div>
       </div>
@@ -80,7 +83,7 @@ export default function Header() {
               aria-hidden
               className="grid h-11 w-11 place-items-center rounded-sm bg-navy font-condensed text-base font-bold text-white"
             >
-              A
+              W
             </span>
             <span className="font-condensed text-[21px] font-medium leading-[1.02] tracking-tight text-navy">
               {brand.name}
@@ -96,7 +99,7 @@ export default function Header() {
                 <li key={item.href}>
                   <a
                     href={item.href}
-                    className="font-condensed text-[17px] font-bold uppercase tracking-[0.02em] text-ink hover:text-brand"
+                    className="whitespace-nowrap font-condensed text-[17px] font-bold uppercase tracking-[0.02em] text-ink hover:text-brand"
                   >
                     {item.label}
                   </a>

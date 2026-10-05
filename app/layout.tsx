@@ -25,7 +25,8 @@ const instrumentSerif = Instrument_Serif({
 
 export const metadata: Metadata = {
   title: event.title,
-  description: "Lorem ipsum dolor sit amet, consectetur adipiscing elit.",
+  openGraph: { images: ["/og.jpg"] },
+  description: "A day of talks, ACM-W and industry expert panels, and the WiCode 27 hackathon at BITS Pilani, Dubai Campus.",
 };
 
 export default function RootLayout({

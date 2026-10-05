@@ -8,20 +8,20 @@ import {
   TicketIcon,
   XIcon,
 } from "@/components/icons";
+import Image from "next/image";
 import {
-  academicPanel,
   agenda,
-  committee,
   event,
+  expertPanel,
   faq,
   getInvolved,
   industryPanel,
   intro,
-  partner,
+  organisers,
+  organisingChapters,
   scholarIntro,
-  scholarQuote,
-  scholars,
   socials,
+  studentChapters,
   utilityLinks,
   venue,
   wicode,
@@ -39,9 +39,6 @@ function SpeakerRow({ title, people }: { title: string; people: Person[] }) {
         <h3 className="font-serif text-[36px] leading-[1.1] text-black sm:text-[46px]">
           Meet the {title}
         </h3>
-        <a href="#" className="text-[15px] text-brand underline underline-offset-4">
-          See all speakers -&gt;
-        </a>
       </div>
       <ul className="no-scrollbar mt-7 flex snap-x gap-6 overflow-x-auto pb-2">
         {people.map((p) => (
@@ -51,6 +48,11 @@ function SpeakerRow({ title, people }: { title: string; people: Person[] }) {
               {p.name}
             </p>
             <p className="mt-1 text-[13px] leading-[18px] text-ink-soft">{p.role}</p>
+            {p.affiliation && (
+              <p className="mt-0.5 text-[13px] font-semibold leading-[18px] text-brand">
+                {p.affiliation}
+              </p>
+            )}
           </li>
         ))}
       </ul>
@@ -58,71 +60,12 @@ function SpeakerRow({ title, people }: { title: string; people: Person[] }) {
   );
 }
 
-/* Venue artwork, after CHI 2026's city mosaic: stained-glass triangles with
-   a Dubai skyline silhouette in front. Deterministic so it renders the same
-   on every build. */
-const tileColours = ["#006dae", "#2f6cb3", "#c47a60", "#e7f3fe", "#003c5f", "#f0b35a", "#7fb3d5"];
-
-function Mosaic() {
-  const size = 60;
-  const cols = 26;
-  const rows = 5;
-  const tiles = [];
-  for (let r = 0; r < rows; r++) {
-    for (let c = 0; c < cols; c++) {
-      const x = c * size;
-      const y = r * size;
-      const a = tileColours[(c * 7 + r * 13 + ((c * r) % 5)) % tileColours.length];
-      const b = tileColours[(c * 11 + r * 5 + 3) % tileColours.length];
-      const flip = (c + r * 3) % 2 === 0;
-      tiles.push(
-        <g key={`${r}-${c}`}>
-          <polygon
-            points={flip ? `${x},${y} ${x + size},${y} ${x},${y + size}` : `${x},${y} ${x + size},${y} ${x + size},${y + size}`}
-            fill={a}
-          />
-          <polygon
-            points={flip ? `${x + size},${y} ${x + size},${y + size} ${x},${y + size}` : `${x},${y} ${x + size},${y + size} ${x},${y + size}`}
-            fill={b}
-          />
-        </g>,
-      );
-    }
-  }
-  // [x, width, height] for each tower, standing on the bottom edge (y = 300).
-  const towers = [
-    [60, 70, 90], [140, 50, 130], [200, 80, 70], [300, 60, 150], [370, 45, 110],
-    [430, 90, 80], [560, 55, 170], [630, 70, 120], [860, 60, 140], [930, 85, 95],
-    [1030, 50, 160], [1090, 75, 105], [1180, 60, 135], [1250, 90, 85], [1350, 55, 150],
-    [1410, 70, 100],
-  ];
-  return (
-    <svg
-      viewBox="0 0 1560 300"
-      preserveAspectRatio="xMidYMax slice"
-      className="absolute inset-0 h-full w-full"
-      aria-hidden
-    >
-      <g stroke="#0d2c4a" strokeWidth="3" strokeLinejoin="round">
-        {tiles}
-      </g>
-      <g fill="#0d2c4a">
-        {towers.map(([x, w, h]) => (
-          <rect key={x} x={x} y={300 - h} width={w} height={h} />
-        ))}
-        {/* Burj Khalifa */}
-        <polygon points="720,300 720,170 735,170 735,110 748,110 748,40 755,0 762,40 762,110 775,110 775,170 790,170 790,300" />
-      </g>
-    </svg>
-  );
-}
-
 const configTiles = [
-  { colour: "#f0b35a", pattern: "config-tile" },
-  { colour: "#7fb3d5", pattern: "config-tile-dots" },
+  { colour: "#f0b35a", pattern: "config-tile-art" },
+  { colour: "#b79ae0", pattern: "config-tile-dots" },
   { colour: "#c47a60", pattern: "config-tile" },
-  { colour: "#e7f3fe", pattern: "config-tile-dots" },
-  { colour: "#006dae", pattern: "config-tile" },
+  { colour: "#f1eafb", pattern: "config-tile-dots" },
+  { colour: "#6b3fa0", pattern: "config-tile" },
 ];
 
 const typeLabel = {
@@ -188,7 +131,7 @@ export default function EventPage() {
       </section>
 
       {/* About, after GitHub Universe: bordered grid, big statement, mono details */}
-      <section id="about" className="bg-grey-soft">
+      <section id="about" className="about-texture">
         <div className={`${wrap} py-16`}>
           <div className="grid border border-rule bg-white lg:grid-cols-[minmax(0,1.6fr)_minmax(0,1fr)]">
             <p className="border-b border-rule p-8 font-display text-[32px] font-medium leading-[1.1] tracking-tight text-black sm:text-[46px] lg:border-b-0 lg:border-r">
@@ -219,8 +162,8 @@ export default function EventPage() {
       {/* Speakers, after Grace Hopper Celebration */}
       <section id="speakers">
         <div className={`${wrap} space-y-16 py-20`}>
-          <SpeakerRow title="Industry Panel" people={industryPanel} />
-          <SpeakerRow title="Academic Panel" people={academicPanel} />
+          <SpeakerRow title="ACM-W Experts" people={expertPanel} />
+          <SpeakerRow title="Industry Experts" people={industryPanel} />
         </div>
       </section>
 
@@ -304,92 +247,111 @@ export default function EventPage() {
             Scholar Cohort
           </h2>
           <p className="mt-4 max-w-[70ch] text-[17px] leading-[26px] text-ink">{scholarIntro}</p>
-          <figure className="quote-gradient mt-10 px-6 py-10 text-center text-white sm:px-16">
-            <blockquote className="mx-auto max-w-[900px] text-[20px] leading-[1.8] sm:text-[23px]">
-              &ldquo;{scholarQuote.text}&rdquo;
-            </blockquote>
-            <figcaption className="mt-3 text-[18px]">
-              ~ <span className="underline underline-offset-2">{scholarQuote.name}</span>,{" "}
-              {scholarQuote.cohort}
-            </figcaption>
-          </figure>
-          <ul className="mt-12 grid gap-7 md:grid-cols-2 lg:grid-cols-3">
-            {scholars.map((s, i) => {
-              const warm = i % 2 === 1;
-              return (
-                <li
-                  key={s.name}
-                  className={`relative rounded-xl border p-5 ${warm ? "border-warm/30 bg-gradient-to-br from-warm-soft to-white" : "border-brand/20 bg-gradient-to-br from-blue-pale to-white"}`}
-                >
-                  {i < 3 && (
-                    <span
-                      className={`absolute -top-3 left-5 z-10 rounded-md px-3 py-1 text-[12px] font-bold uppercase tracking-wide text-white ${warm ? "bg-warm" : "bg-brand"}`}
-                    >
-                      2026 Cohort
-                    </span>
-                  )}
-                  <div aria-hidden className="photo-placeholder aspect-square w-full" />
-                  <p
-                    className={`mt-5 font-display text-[26px] font-bold leading-[1.15] ${warm ? "text-warm" : "text-brand"}`}
-                  >
-                    {s.name}
-                  </p>
-                  <div className="mt-3 flex flex-wrap items-center gap-3">
-                    <span className="font-serif text-[18px] text-ink">{s.institution}</span>
-                    <span
-                      className={`rounded-md px-2 py-0.5 text-[12px] font-bold uppercase text-white ${warm ? "bg-warm" : "bg-brand"}`}
-                    >
-                      #Scholar
-                    </span>
-                  </div>
-                </li>
-              );
-            })}
-          </ul>
+          <div className="relative mt-10 aspect-[3/1] min-h-[200px] w-full overflow-hidden">
+            <Image
+              src="/art/scholars.webp"
+              alt=""
+              fill
+              sizes="(min-width: 1500px) 1340px, 100vw"
+              className="object-cover"
+            />
+            <p className="absolute bottom-5 left-5 bg-navy px-5 py-3 font-display text-[18px] font-semibold text-white sm:bottom-8 sm:left-8">
+              2026 cohort to be announced
+            </p>
+          </div>
         </div>
       </section>
 
-      {/* Organising committee and partner, after SIGGRAPH's sponsor tiers */}
+      {/* Organisers and student chapters, after SIGGRAPH's sponsor tiers */}
       <section id="committee" className="bg-sand">
         <div className={`${wrap} space-y-14 py-20`}>
-          {[...committee, { role: "Partner", members: [partner] }].map((group) => (
-            <div key={group.role} className="grid gap-6 lg:grid-cols-[340px_minmax(0,1fr)]">
-              <div>
-                <p className="font-display text-[16px] font-semibold text-navy">Thanks to our</p>
-                <h2 className="font-display text-[30px] font-bold leading-tight text-navy">
-                  {group.role}
-                </h2>
-              </div>
-              <ul className="flex flex-wrap gap-6">
-                {group.members.map((m) => (
-                  <li
-                    key={m}
-                    className="w-[200px] bg-white p-4"
-                  >
-                    {group.role === "Partner" ? (
-                      <span className="grid aspect-square w-full place-items-center bg-grey-soft p-4 text-center font-condensed text-[20px] font-bold uppercase text-navy">
-                        {m}
-                      </span>
-                    ) : (
-                      <>
-                        <span aria-hidden className="photo-placeholder block aspect-square w-full" />
-                        <span className="mt-3 block text-[15px] font-semibold leading-tight text-navy">
-                          {m}
-                        </span>
-                      </>
-                    )}
-                  </li>
-                ))}
-              </ul>
+          <div className="grid gap-6 lg:grid-cols-[340px_minmax(0,1fr)]">
+            <div>
+              <p className="font-display text-[16px] font-semibold text-navy">Organised by</p>
+              <h2 className="font-display text-[30px] font-bold leading-tight text-navy">
+                Organising Chapters
+              </h2>
             </div>
-          ))}
+            <ul className="flex flex-wrap gap-6">
+              {organisingChapters.map((c) => (
+                <li key={c.name} className="w-[320px] bg-white p-4">
+                  {c.logo ? (
+                    <span className="relative block aspect-[2/1] w-full">
+                      <Image src={c.logo} alt="" fill sizes="288px" className="object-contain" />
+                    </span>
+                  ) : (
+                    <span className="grid aspect-[2/1] w-full place-items-center bg-grey-soft p-4 text-center font-condensed text-[20px] font-bold uppercase leading-tight text-navy">
+                      {c.name}
+                    </span>
+                  )}
+                  <span className="mt-3 block text-[14px] font-semibold leading-tight text-navy">
+                    {c.name}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="grid gap-6 lg:grid-cols-[340px_minmax(0,1fr)]">
+            <div>
+              <p className="font-display text-[16px] font-semibold text-navy">Led by</p>
+              <h2 className="font-display text-[30px] font-bold leading-tight text-navy">
+                Conference Chairs
+              </h2>
+            </div>
+            <ul className="flex flex-wrap gap-6">
+              {organisers.map((p) => (
+                <li key={p.name} className="w-[260px] bg-white p-4">
+                  <span aria-hidden className="photo-placeholder block aspect-square w-full" />
+                  <span className="mt-3 block text-[16px] font-semibold leading-tight text-navy">
+                    {p.name}
+                  </span>
+                  <span className="mt-1 block text-[13px] leading-[18px] text-ink-soft">
+                    {p.role}, {p.affiliation}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
+          <div className="grid gap-6 lg:grid-cols-[340px_minmax(0,1fr)]">
+            <div>
+              <p className="font-display text-[16px] font-semibold text-navy">Thanks to our</p>
+              <h2 className="font-display text-[30px] font-bold leading-tight text-navy">
+                Student Chapters
+              </h2>
+            </div>
+            {/* Chapters without a logo yet show their name in the tile. */}
+            <ul className="flex flex-wrap gap-6">
+              {studentChapters.map((c) => (
+                <li key={c.name} className="w-[200px] bg-white p-4">
+                  {c.logo ? (
+                    <span className={`relative block aspect-square w-full ${c.darkLogo ? "bg-navy-bar" : ""}`}>
+                      <Image src={c.logo} alt="" fill sizes="168px" className="object-contain" />
+                    </span>
+                  ) : (
+                    <span className="grid aspect-square w-full place-items-center bg-grey-soft p-4 text-center font-condensed text-[18px] font-bold uppercase leading-tight text-navy">
+                      {c.name}
+                    </span>
+                  )}
+                  <span className="mt-3 block text-[14px] font-semibold leading-tight text-navy">
+                    {c.name}
+                  </span>
+                </li>
+              ))}
+            </ul>
+          </div>
         </div>
       </section>
 
       {/* Venue, after CHI 2026: city artwork band, key info list, map */}
       <section id="venue">
         <div className="relative h-[240px] overflow-hidden bg-navy-bar">
-          <Mosaic />
+          <Image
+            src="/art/venue.webp"
+            alt="Stained-glass mosaic of the Dubai skyline"
+            fill
+            sizes="100vw"
+            className="object-cover object-bottom"
+          />
           <div className="absolute inset-0 bg-gradient-to-t from-navy-bar/90 via-navy-bar/30 to-transparent" />
           <div className={`${wrap} relative flex h-full flex-col justify-end pb-8`}>
             <p className="font-display text-[15px] font-semibold uppercase tracking-[0.2em] text-white/85">
@@ -413,7 +375,7 @@ export default function EventPage() {
               Directions
             </div>
             <p className="px-4 py-3 text-[15px] leading-[22px] text-ink">
-              Lorem ipsum dolor sit amet: parking and metro details to be added.
+              {venue.directions}
             </p>
             <a
               href={venue.mapHref}

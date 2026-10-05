@@ -1,7 +1,9 @@
 # ACM Conference Website
 
-A Next.js clone of the layout used by the Monash ACM-W "From Research to Reality"
-event page. **All copy is lorem ipsum placeholder text** — no real event data.
+Website for the Women in Computing Conference at BITS Pilani, Dubai Campus,
+organised by the ACM-W Dubai and ACM Dubai Professional Chapters. Speaker,
+organiser and chapter details come from the organisers; details still pending
+read "to be announced".
 
 ## Stack
 
@@ -37,9 +39,9 @@ copy, schedule, industry and academic panels, committee, partner, venue,
 WiCode 27, scholar cohort, FAQ and get-involved cards. Edit that one file; no
 component changes needed.
 
-Photos are CSS placeholders (`.photo-placeholder` in `app/globals.css`). To use
-real headshots, add an image field to `Person` / `Scholar` and swap the
-placeholder elements in `app/page.tsx` for `<Image>`.
+Artwork is from Midjourney (prompts in `docs/midjourney-prompts.md`) and lives
+in `public/art/`; chapter logos are in `public/logos/`. Headshots are still
+placeholders (`.photo-placeholder` in `app/globals.css`, a lavender backdrop).
 
 ## Development
 
