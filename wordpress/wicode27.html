@@ -1,0 +1,874 @@
+<!-- WiCoDE27 page for https://dubai.acm.org/events/ (WordPress Custom HTML block).
+     Every style is scoped to #w27 so the Lightning theme and the page do not clash.
+     {{A}} is replaced with the asset base URL by build.py. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist+Mono:wght@400;500&family=Inter:wght@400;500;600;700&family=Roboto+Condensed:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+/* Page-level: hide the theme's title bar and breadcrumb on this page only,
+   remove its top padding, and stop the full-bleed sections causing sideways scroll. */
+html, body { overflow-x: clip; }
+.page-header, .breadcrumb, .breadSection { display: none !important; }
+.siteContent { padding-top: 0 !important; padding-bottom: 0 !important; }
+.entry-header, .entry-footer { display: none !important; }
+/* Lightning puts page content in the left column of a two-column grid; on this
+   page that column becomes the full window width and the empty sidebar goes. */
+.siteContent > .container { max-width: none !important; padding: 0 !important; }
+.siteContent > .container > .row { margin: 0 !important; }
+.siteContent .mainSection { flex: 0 0 100% !important; max-width: 100% !important; width: 100% !important; padding: 0 !important; }
+.siteContent .subSection { display: none !important; }
+
+#w27 {
+  --deep: #3b1f5e; --darkest: #2a1645; --purple: #6b3fa0; --lav: #faf8fd; --lav2: #e6dff0;
+  --gold: #fab001; --ink: #1a1a1a; --rule: #e6dff0;
+  --cond: "Roboto Condensed", "Arial Narrow", sans-serif;
+  --mono: "Geist Mono", ui-monospace, Menlo, monospace;
+  --body: Inter, system-ui, -apple-system, "Segoe UI", sans-serif;
+  font-family: var(--body); color: var(--ink); font-size: 16px; line-height: 1.6;
+  -webkit-font-smoothing: antialiased; background: #fff;
+}
+/* Reset what the theme puts on headings, lists, tables and links inside the page. */
+#w27 *, #w27 *::before, #w27 *::after { box-sizing: border-box; }
+#w27 h1, #w27 h2, #w27 h3, #w27 h4, #w27 p, #w27 ul, #w27 ol, #w27 figure, #w27 blockquote, #w27 dl, #w27 dd {
+  margin: 0; padding: 0; border: 0; background: none; box-shadow: none;
+}
+#w27 h1::before, #w27 h1::after, #w27 h2::before, #w27 h2::after, #w27 h3::before, #w27 h3::after, #w27 h4::before, #w27 h4::after { content: none !important; display: none !important; }
+#w27 h1, #w27 h2, #w27 h3, #w27 h4 { font-family: var(--cond); color: var(--deep); font-weight: 700; line-height: 1.1; letter-spacing: 0; }
+#w27 ul, #w27 ol { list-style: none; }
+#w27 li { margin: 0; padding: 0; border: 0; }
+#w27 li::before { content: none; }
+#w27 a { color: inherit; text-decoration: none; box-shadow: none; }
+#w27 img { display: block; max-width: 100%; height: auto; border: 0; }
+#w27 table { border-collapse: collapse; width: 100%; margin: 0; border: 0; }
+#w27 th, #w27 td { border: 0; padding: 0; background: none; text-align: left; vertical-align: top; }
+
+#w27 .wrap { max-width: 1340px; margin: 0 auto; padding: 0 24px; }
+@media (min-width: 768px) { #w27 .wrap { padding: 0 48px; } }
+#w27 section { scroll-margin-top: 110px; }
+#w27 .sec { padding: 80px 0; }
+#w27 .alt { background: var(--lav); }
+#w27 .kicker { font-family: var(--mono); font-size: 13px; letter-spacing: .14em; text-transform: uppercase; color: var(--purple); font-weight: 500; }
+#w27 .h2 { font-size: clamp(38px, 5vw, 64px); margin-top: 8px; }
+#w27 .lead { font-size: 18px; line-height: 1.65; max-width: 72ch; margin-top: 20px; color: var(--ink); }
+#w27 .btn { display: inline-block; font-family: var(--cond); font-weight: 700; font-size: 16px; letter-spacing: .04em; text-transform: uppercase; padding: 14px 26px; border: 2px solid transparent; transition: background .15s, color .15s; cursor: pointer; }
+#w27 .btn-gold { background: var(--gold); color: var(--darkest); }
+#w27 .btn-gold:hover { background: #fff; }
+#w27 .btn-purple { background: var(--purple); color: #fff; }
+#w27 .btn-purple:hover { background: var(--deep); }
+#w27 .btn-outline { border-color: #fff; color: #fff; }
+#w27 .btn-outline:hover { background: #fff; color: var(--deep); }
+#w27 .note { font-family: var(--mono); font-size: 14px; color: var(--deep); margin-top: 24px; }
+
+/* Section nav */
+#w27 .nav { position: sticky; top: var(--wp-admin--admin-bar--height, 0px); z-index: 50; background: var(--deep); }
+#w27 .nav ul { display: flex; gap: 4px; align-items: center; overflow-x: auto; scrollbar-width: none; padding: 10px 0; }
+#w27 .nav ul::-webkit-scrollbar { display: none; }
+#w27 .nav a { display: block; white-space: nowrap; padding: 8px 12px; font-family: var(--cond); font-weight: 700; font-size: 15px; text-transform: uppercase; letter-spacing: .03em; color: #fff; }
+#w27 .nav a:hover, #w27 .nav a.on { background: var(--purple); }
+#w27 .nav .reg { margin-left: auto; background: var(--gold); color: var(--darkest); }
+#w27 .nav .reg:hover { background: #fff; }
+
+/* Hero */
+#w27 .hero { background-color: var(--darkest);
+  background-image: linear-gradient(90deg, rgba(42,22,69,.92) 0%, rgba(42,22,69,.6) 50%, rgba(42,22,69,.15) 85%), url("{{A}}/art/hero.webp");
+  background-size: cover; background-position: center right; color: #fff; }
+#w27 .hero .wrap { padding-top: 96px; padding-bottom: 72px; }
+#w27 .hero .kicker { color: #fff; }
+#w27 .hero h1 { color: #fff; font-size: clamp(64px, 11vw, 150px); line-height: .9; margin-top: 14px; letter-spacing: -.01em; }
+#w27 .hero .theme { font-family: var(--cond); font-size: clamp(28px, 3.4vw, 44px); font-weight: 500; margin-top: 18px; color: #fff; }
+#w27 .hero .tag { font-family: var(--cond); font-size: clamp(20px, 2.2vw, 26px); color: var(--gold); font-weight: 700; letter-spacing: .04em; text-transform: uppercase; margin-top: 4px; }
+#w27 .hero .line { font-family: var(--mono); font-size: 15px; margin-top: 28px; color: #fff; display: flex; flex-wrap: wrap; gap: 8px 18px; }
+#w27 .hero .line span + span::before { content: "|"; margin-right: 18px; color: var(--gold); }
+#w27 .hero .ctas { display: flex; flex-wrap: wrap; gap: 12px; margin-top: 36px; }
+#w27 .hero .ctas small { display: block; font-family: var(--mono); font-size: 12px; text-transform: none; letter-spacing: 0; font-weight: 400; margin-top: 2px; }
+#w27 .count { display: flex; gap: 10px; margin-top: 44px; flex-wrap: wrap; }
+#w27 .count div { min-width: 92px; padding: 14px 10px; border: 1px solid rgba(250,176,1,.55); background: rgba(42,22,69,.55); text-align: center; }
+#w27 .count b { display: block; font-family: var(--cond); font-size: 46px; line-height: 1; color: var(--gold); }
+#w27 .count span { display: block; font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: #fff; margin-top: 6px; }
+#w27 .count-label { font-family: var(--mono); font-size: 13px; color: #fff; margin-top: 12px; }
+
+@media (max-width: 600px) {
+  #w27 .hero .line { flex-direction: column; gap: 2px; }
+  #w27 .hero .line span + span::before { content: none; }
+  #w27 .count { gap: 6px; flex-wrap: nowrap; }
+  #w27 .count div { min-width: 0; flex: 1; padding: 10px 4px; }
+  #w27 .count b { font-size: 32px; }
+  #w27 .count span { font-size: 10px; letter-spacing: .04em; }
+}
+
+/* Key numbers */
+#w27 .nums { background: var(--deep); }
+#w27 .nums ul { display: grid; grid-template-columns: repeat(2, 1fr); }
+@media (min-width: 900px) { #w27 .nums ul { grid-template-columns: repeat(5, 1fr); } }
+#w27 .nums li { padding: 30px 16px; text-align: center; border-right: 1px solid rgba(255,255,255,.14); }
+#w27 .nums b { display: block; font-family: var(--cond); font-size: 52px; line-height: 1; color: var(--gold); }
+#w27 .nums span { display: block; font-family: var(--mono); font-size: 13px; text-transform: uppercase; letter-spacing: .08em; color: #fff; margin-top: 8px; }
+
+/* Intro + days */
+#w27 .intro-grid { display: grid; gap: 0; border: 1px solid var(--rule); background: #fff; }
+@media (min-width: 1000px) { #w27 .intro-grid { grid-template-columns: 1.5fr 1fr; } }
+#w27 .intro-grid > * { padding: 36px; }
+#w27 .intro-statement { font-family: var(--cond); font-size: clamp(28px, 3.4vw, 42px); line-height: 1.15; color: var(--deep); font-weight: 500; border-bottom: 1px solid var(--rule); }
+@media (min-width: 1000px) { #w27 .intro-statement { border-bottom: 0; border-right: 1px solid var(--rule); } }
+#w27 .intro-facts { font-family: var(--mono); font-size: 15px; line-height: 1.9; color: var(--ink); }
+#w27 .intro-facts .dot { display: inline-block; width: 10px; height: 10px; background: var(--gold); margin-left: 6px; }
+#w27 .intro-body { grid-column: 1 / -1; border-top: 1px solid var(--rule); font-size: 17px; line-height: 1.7; }
+#w27 .days { display: grid; gap: 20px; margin-top: 40px; }
+@media (min-width: 900px) { #w27 .days { grid-template-columns: 1fr 1fr; } }
+#w27 .day { background: var(--deep); color: #fff; padding: 32px; }
+#w27 .day .kicker { color: var(--gold); }
+#w27 .day h3 { color: #fff; font-size: 34px; margin-top: 8px; }
+#w27 .day p { margin-top: 14px; font-size: 16px; line-height: 1.65; color: #fff; }
+
+/* Card grids */
+#w27 .cards { display: grid; gap: 20px; margin-top: 40px; }
+@media (min-width: 700px) { #w27 .cards { grid-template-columns: repeat(2, 1fr); } }
+@media (min-width: 1100px) { #w27 .cards.three { grid-template-columns: repeat(3, 1fr); } }
+#w27 .card { background: #fff; border: 1px solid var(--deep); padding: 26px; display: flex; flex-direction: column; }
+#w27 .card h3 { font-size: 26px; }
+#w27 .card p { margin-top: 10px; font-size: 16px; line-height: 1.6; flex: 1; }
+#w27 .card .btn { margin-top: 20px; align-self: flex-start; }
+#w27 .card .num { font-family: var(--mono); font-size: 13px; color: var(--purple); margin-bottom: 10px; }
+
+/* About */
+#w27 .about { background-color: var(--lav); background-image: url("{{A}}/art/about-texture.webp"); background-size: cover; }
+#w27 .two-col { display: grid; gap: 28px; margin-top: 40px; }
+@media (min-width: 900px) { #w27 .two-col { grid-template-columns: 1fr 1fr; } }
+#w27 .panel { background: #fff; border: 1px solid var(--rule); padding: 30px; }
+#w27 .panel h3 { font-size: 28px; }
+#w27 .panel p { margin-top: 12px; font-size: 16px; line-height: 1.7; }
+#w27 .panel a.link { color: var(--purple); font-weight: 600; text-decoration: underline; text-underline-offset: 3px; }
+#w27 .ticks li { position: relative; padding-left: 26px; margin-top: 10px; font-size: 16px; }
+#w27 .ticks li::before { content: "" !important; position: absolute; left: 0; top: 8px; width: 10px; height: 10px; background: var(--purple); }
+
+/* Programme tabs */
+#w27 .tabs { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 36px; border-bottom: 2px solid var(--deep); }
+#w27 .tab { font-family: var(--cond); font-weight: 700; font-size: 17px; text-transform: uppercase; letter-spacing: .03em; padding: 14px 20px; background: var(--lav2); color: var(--deep); border: 0; cursor: pointer; border-radius: 0; line-height: 1.2; text-align: left; }
+#w27 .tab small { display: block; font-family: var(--mono); font-weight: 400; font-size: 12px; text-transform: none; letter-spacing: 0; margin-top: 3px; }
+#w27 .tab[aria-selected="true"] { background: var(--purple); color: #fff; }
+#w27 .panel-prog[hidden] { display: none; }
+#w27 .prog-title { font-size: 26px; margin-top: 32px; }
+#w27 .prog { margin-top: 18px; }
+#w27 .prog tr { border-top: 1px solid var(--rule); }
+#w27 .prog th { font-family: var(--mono); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--deep); padding: 0 16px 12px 0; }
+#w27 .prog td { padding: 18px 16px 18px 0; font-size: 16px; }
+#w27 .prog td:first-child { font-family: var(--mono); font-size: 15px; color: var(--deep); white-space: nowrap; width: 9rem; }
+#w27 .prog td:nth-child(2) { font-family: var(--cond); font-size: 22px; font-weight: 700; color: var(--ink); line-height: 1.2; }
+#w27 .prog tr.brk td:nth-child(2) { font-weight: 400; color: var(--deep); font-size: 20px; }
+@media (max-width: 700px) {
+  #w27 .prog thead { display: none; }
+  #w27 .prog tr { display: block; padding: 14px 0; }
+  #w27 .prog td { display: block; padding: 2px 0; width: auto !important; }
+}
+
+/* Key dates */
+#w27 .timeline { margin-top: 40px; position: relative; }
+#w27 .timeline li { position: relative; padding: 0 0 30px 40px; }
+#w27 .timeline li::before { content: "" !important; position: absolute; left: 7px; top: 8px; bottom: -8px; width: 2px; background: var(--lav2); }
+#w27 .timeline li:last-child::before { display: none; }
+#w27 .timeline .mk { position: absolute; left: 0; top: 4px; width: 16px; height: 16px; border: 3px solid var(--purple); background: #fff; }
+#w27 .timeline li.done .mk { background: var(--purple); }
+#w27 .timeline li.done .mk::after { content: "✓"; position: absolute; inset: -3px 0 0 0; color: #fff; font-size: 11px; text-align: center; line-height: 16px; }
+#w27 .timeline time { font-family: var(--mono); font-size: 14px; color: var(--purple); font-weight: 500; }
+#w27 .timeline p { font-family: var(--cond); font-size: 22px; font-weight: 700; color: var(--ink); line-height: 1.25; margin-top: 2px; }
+#w27 .timeline li.done p::after { content: "Completed"; font-family: var(--mono); font-size: 11px; font-weight: 400; text-transform: uppercase; letter-spacing: .1em; margin-left: 10px; padding: 2px 6px; background: var(--lav2); color: var(--deep); vertical-align: middle; }
+#w27 .timeline li.final p { color: var(--purple); }
+
+/* Scholars */
+#w27 .banner-img { margin-top: 36px; height: clamp(180px, 30vw, 440px); background: url("{{A}}/art/scholars.webp") center/cover; }
+#w27 .steps { counter-reset: s; margin-top: 18px; }
+#w27 .steps li { counter-increment: s; position: relative; padding: 0 0 18px 50px; font-size: 16px; line-height: 1.6; }
+#w27 .steps li::before { content: counter(s) !important; position: absolute; left: 0; top: 0; width: 34px; height: 34px; background: var(--deep); color: #fff; font-family: var(--cond); font-weight: 700; font-size: 18px; display: grid; place-items: center; }
+
+/* Get involved */
+#w27 .involve { background-color: #5b21b6; background-image: linear-gradient(90deg, rgba(46,16,101,.7), rgba(46,16,101,.25)), url("{{A}}/art/wicode.webp"); background-size: cover; background-position: center; }
+#w27 .involve .kicker, #w27 .involve .h2 { color: #fff; }
+#w27 .involve .card { border-color: transparent; }
+#w27 .facts { margin-top: 12px; display: grid; gap: 8px; }
+#w27 .facts p { margin: 0; font-size: 15px; line-height: 1.55; flex: none; }
+#w27 .facts b { color: var(--deep); font-family: var(--mono); font-weight: 500; font-size: 13px; text-transform: uppercase; letter-spacing: .06em; margin-right: 6px; }
+
+/* Awards */
+#w27 .awards { margin-top: 36px; }
+#w27 .awards tr { border-top: 1px solid var(--rule); }
+#w27 .awards thead tr { border-top: 0; }
+#w27 .awards th { font-family: var(--mono); font-weight: 500; font-size: 12px; text-transform: uppercase; letter-spacing: .1em; color: var(--deep); padding: 0 16px 12px 0; }
+#w27 .awards td { padding: 16px 16px 16px 0; font-size: 16px; }
+#w27 .awards td:first-child { font-family: var(--cond); font-weight: 700; font-size: 21px; color: var(--deep); width: 34%; line-height: 1.2; }
+@media (max-width: 700px) {
+  #w27 .awards thead { display: none; }
+  #w27 .awards tr { display: block; padding: 14px 0; }
+  #w27 .awards td { display: block; padding: 2px 0; width: auto !important; }
+  #w27 .awards td[data-l]::before { content: attr(data-l) ": "; font-family: var(--mono); font-size: 12px; text-transform: uppercase; color: var(--purple); }
+}
+
+/* People */
+#w27 .row-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: end; gap: 8px; margin-top: 48px; }
+#w27 .row-head h3 { font-size: clamp(30px, 3.6vw, 44px); }
+#w27 .people { display: grid; gap: 24px; margin-top: 24px; grid-template-columns: repeat(auto-fill, minmax(220px, 1fr)); }
+#w27 .person .ph { aspect-ratio: 1/1; width: 100%; background: var(--lav2) url("{{A}}/art/speaker-bg.webp") center/cover; overflow: hidden; }
+#w27 .person .ph img { width: 100%; height: 100%; object-fit: cover; }
+#w27 .person h4 { font-family: var(--body); font-weight: 700; font-size: 18px; color: var(--ink); margin-top: 14px; line-height: 1.3; }
+#w27 .person p { font-size: 14px; line-height: 1.45; color: var(--ink); margin-top: 4px; }
+#w27 .person p.org { color: var(--purple); font-weight: 600; }
+
+/* Organisers */
+#w27 .org-tier { display: grid; gap: 20px; padding: 40px 0; border-top: 1px solid var(--lav2); }
+#w27 .org-tier:first-of-type { border-top: 0; }
+@media (min-width: 1000px) { #w27 .org-tier { grid-template-columns: 300px 1fr; } }
+#w27 .org-tier .lbl p { font-family: var(--mono); font-size: 13px; text-transform: uppercase; letter-spacing: .1em; color: var(--purple); }
+#w27 .org-tier .lbl h3 { font-size: 30px; margin-top: 4px; }
+#w27 .tiles { display: flex; flex-wrap: wrap; gap: 18px; }
+#w27 .tile { width: 200px; background: #fff; padding: 14px; }
+#w27 .tile .lg { aspect-ratio: 1/1; display: grid; place-items: center; background: var(--lav); padding: 12px; text-align: center; font-family: var(--cond); font-weight: 700; font-size: 17px; text-transform: uppercase; color: var(--deep); line-height: 1.2; }
+#w27 .tile .lg.dark { background: var(--darkest); }
+#w27 .tile .lg img { max-height: 100%; width: auto; object-fit: contain; }
+#w27 .tile .lg.wide { aspect-ratio: 2/1; }
+#w27 .tile.wide { width: 300px; }
+#w27 .tile h4 { font-family: var(--body); font-size: 14px; font-weight: 700; color: var(--deep); margin-top: 10px; line-height: 1.3; }
+#w27 .chair { width: 240px; background: #fff; padding: 14px; }
+#w27 .chair h4 { font-family: var(--body); font-size: 16px; font-weight: 700; color: var(--ink); margin-top: 12px; }
+#w27 .chair p { font-size: 13px; line-height: 1.45; margin-top: 4px; color: var(--ink); }
+#w27 .plain li { font-size: 16px; line-height: 1.6; margin-top: 8px; }
+#w27 .plain li b { color: var(--deep); }
+
+/* Venue */
+#w27 .venue-band { position: relative; height: 240px; background: var(--darkest) url("{{A}}/art/venue.webp") center bottom/cover; }
+#w27 .venue-band::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(42,22,69,.92), rgba(42,22,69,.3) 60%, rgba(42,22,69,0)); }
+#w27 .venue-band .wrap { position: relative; z-index: 1; height: 100%; display: flex; flex-direction: column; justify-content: flex-end; padding-bottom: 28px; }
+#w27 .venue-band .kicker { color: #fff; }
+#w27 .venue-band h2 { color: #fff; font-size: clamp(34px, 4.4vw, 52px); margin-top: 4px; }
+#w27 .venue-grid { display: grid; gap: 36px; padding: 56px 0 80px; }
+@media (min-width: 1000px) { #w27 .venue-grid { grid-template-columns: 420px 1fr; } }
+#w27 .info-h { background: var(--lav); padding: 12px 16px; font-weight: 700; color: var(--deep); font-size: 15px; margin-top: 10px; }
+#w27 .info-b { padding: 12px 16px; font-size: 15px; line-height: 1.6; }
+#w27 .map { width: 100%; height: 100%; min-height: 420px; border: 1px solid var(--rule); }
+#w27 .intl { margin-top: 36px; }
+
+/* Register */
+#w27 .register { background: var(--deep); color: #fff; }
+#w27 .register .kicker { color: var(--gold); }
+#w27 .register .h2 { color: #fff; }
+#w27 .register .lead { color: #fff; }
+#w27 .reg-status { display: inline-block; margin-top: 28px; background: var(--gold); color: var(--darkest); font-family: var(--cond); font-weight: 700; font-size: 22px; padding: 14px 22px; }
+#w27 .reg-fields { margin-top: 36px; display: grid; gap: 10px; }
+@media (min-width: 800px) { #w27 .reg-fields { grid-template-columns: 1fr 1fr; } }
+#w27 .reg-fields li { border: 1px solid rgba(255,255,255,.3); padding: 14px 16px; font-size: 15px; color: #fff; }
+
+/* FAQ */
+#w27 .faq-word { font-family: var(--cond); font-weight: 700; font-size: clamp(96px, 16vw, 200px); line-height: .85; color: var(--deep); }
+#w27 .faq { margin-top: 36px; border-top: 1px solid var(--deep); }
+#w27 .faq details { border-bottom: 1px solid var(--deep); background: #fff; }
+#w27 .faq summary { list-style: none; cursor: pointer; display: flex; justify-content: space-between; gap: 20px; align-items: center; padding: 20px 4px; font-size: 19px; font-weight: 600; color: var(--ink); }
+#w27 .faq summary::-webkit-details-marker { display: none; }
+#w27 .faq summary span { font-family: var(--mono); font-size: 24px; color: var(--purple); transition: transform .15s; }
+#w27 .faq details[open] summary span { transform: rotate(45deg); }
+#w27 .faq p { padding: 0 4px 22px; font-size: 16px; line-height: 1.7; max-width: 80ch; }
+
+/* Closing + contact */
+#w27 .closing { background: #000; color: #fff; }
+#w27 .closing .word { font-family: var(--cond); font-weight: 700; text-transform: uppercase; font-size: clamp(60px, 11vw, 150px); line-height: .9; color: #fff; }
+#w27 .contact { display: grid; gap: 20px; margin-top: 48px; padding-bottom: 56px; font-size: 15px; }
+@media (min-width: 900px) { #w27 .contact { grid-template-columns: repeat(4, 1fr); } }
+#w27 .contact p.k { font-family: var(--mono); font-size: 12px; text-transform: uppercase; letter-spacing: .12em; color: var(--gold); }
+#w27 .contact p.v { margin-top: 6px; color: #fff; line-height: 1.5; }
+#w27 .contact a { text-decoration: underline; text-underline-offset: 3px; }
+#w27 .tiles5 { display: grid; grid-template-columns: repeat(5, 1fr); height: 120px; }
+#w27 .tiles5 div { background-size: 44px 30px; }
+#w27 .t-blob { background-image: radial-gradient(ellipse 18px 10px at 50% 50%, #000 96%, transparent); }
+#w27 .t-dots { background-image: radial-gradient(circle 3px at 50% 50%, #000 96%, transparent) !important; background-size: 12px 12px !important; }
+#w27 .foot { border-top: 1px solid rgba(255,255,255,.2); padding: 24px 0 32px; font-size: 14px; color: #fff; display: flex; flex-wrap: wrap; justify-content: space-between; gap: 12px; }
+</style>
+
+<div id="w27">
+
+  <nav class="nav" aria-label="WiCoDE27 sections">
+    <div class="wrap">
+      <ul>
+        <li><a href="#w27-home">Home</a></li>
+        <li><a href="#w27-about">About</a></li>
+        <li><a href="#w27-programme">Programme</a></li>
+        <li><a href="#w27-scholars">ACM-W Scholars</a></li>
+        <li><a href="#w27-involved">Get Involved</a></li>
+        <li><a href="#w27-awards">Awards</a></li>
+        <li><a href="#w27-speakers">Speakers</a></li>
+        <li><a href="#w27-organisers">Organisers</a></li>
+        <li><a href="#w27-travel">Travel</a></li>
+        <li><a href="#w27-faq">FAQ</a></li>
+        <li class="reg-li" style="margin-left:auto"><a class="reg" href="#w27-register">Register</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- HOME -->
+  <section id="w27-home" class="hero">
+    <div class="wrap">
+      <p class="kicker">ACM Celebration of Women in Computing</p>
+      <h1>WiCoDE27</h1>
+      <p class="theme">Lab to Launch</p>
+      <p class="tag">Decode. Create. Lead.</p>
+      <p class="line"><span>7 and 8 April 2027</span><span>BITS Pilani, Dubai Campus</span><span>Free to attend</span></p>
+      <div class="ctas">
+        <a class="btn btn-gold" href="#w27-scholars">Apply as an ACM-W Scholar<small>Call opens 15 November 2026</small></a>
+        <a class="btn btn-outline" href="#w27-register">Register<small>Opens 1 February 2027</small></a>
+      </div>
+      <div class="count" id="w27-count" aria-live="polite">
+        <div><b data-u="d">--</b><span>Days</span></div>
+        <div><b data-u="h">--</b><span>Hours</span></div>
+        <div><b data-u="m">--</b><span>Minutes</span></div>
+        <div><b data-u="s">--</b><span>Seconds</span></div>
+      </div>
+      <p class="count-label">Until 08:30, Wednesday 7 April 2027 (UAE time, GMT+4)</p>
+    </div>
+  </section>
+
+  <div class="nums">
+    <div class="wrap">
+      <ul>
+        <li><b>2</b><span>Days</span></li>
+        <li><b>300</b><span>Participants</span></li>
+        <li><b>40</b><span>International scholars</span></li>
+        <li><b>6</b><span>Student chapters</span></li>
+        <li><b>10</b><span>Award categories</span></li>
+      </ul>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="wrap">
+      <div class="intro-grid">
+        <p class="intro-statement">Two days of mentoring, real industry challenges and recognition for women in computing.</p>
+        <div class="intro-facts">
+          <p>Wednesday 7 April 2027</p>
+          <p>Thursday 8 April 2027</p>
+          <p>BITS Pilani, Dubai Campus</p>
+          <p style="margin-top:14px">in person &amp; free to attend<span class="dot" aria-hidden="true"></span></p>
+        </div>
+        <p class="intro-body">WiCoDE27 brings research scholars, students, industry leaders and the global ACM-W leadership together in Dubai for two days of mentoring, real industry challenges and recognition. It is the second edition of the ACM Celebration of Women in Computing organised by the Dubai ACM-W Professional Chapter, and this year it opens with the ACM-W Scholars’ Cohort for research scholars from the UAE and abroad.</p>
+      </div>
+
+      <div class="days">
+        <div class="day">
+          <p class="kicker">Day 1: Wednesday 7 April</p>
+          <h3>ACM-W Scholars’ Cohort</h3>
+          <p>For research scholars from all disciplines. Industry panel, Pitch to Industry, Coffee with a Chair, Career Studio and the WiCoDE Recognition Awards.</p>
+        </div>
+        <div class="day">
+          <p class="kicker">Day 2: Thursday 8 April</p>
+          <h3>WiCoDE27 Celebration</h3>
+          <p>For students and student chapters. Industry Challenge Sprint finals, hands-on workshops, the chapter showcase and the student awards.</p>
+        </div>
+      </div>
+
+      <p class="kicker" style="margin-top:72px">Highlights</p>
+      <h2 class="h2">What happens at WiCoDE27</h2>
+      <div class="cards three">
+        <div class="card"><h3>Pitch to Industry</h3><p>Three minutes to show industry what your research can do.</p></div>
+        <div class="card"><h3>Industry Challenge Sprint</h3><p>Real problems from real companies. Win an interview, not a voucher.</p></div>
+        <div class="card"><h3>My Research in 60 Seconds</h3><p>Explain your research in one vertical video and let the community vote.</p></div>
+        <div class="card"><h3>Coffee with a Chair</h3><p>Ten minutes at the table with ACM-W leaders and industry experts.</p></div>
+        <div class="card"><h3>Career Studio</h3><p>Professional headshot, LinkedIn review and CV clinic, free for every participant.</p></div>
+        <div class="card"><h3>WiCoDE Recognition Awards</h3><p>Celebrating women in computing across research, industry and student leadership in the UAE.</p></div>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABOUT -->
+  <section id="w27-about" class="sec about">
+    <div class="wrap">
+      <p class="kicker">About</p>
+      <h2 class="h2">About WiCoDE27</h2>
+      <p class="lead">WiCoDE is the ACM Celebration of Women in Computing organised in Dubai by the Dubai ACM-W Professional Chapter with the Dubai ACM Professional Chapter, hosted by BITS Pilani, Dubai Campus. It brings together students, research scholars, faculty, industry professionals and ACM-W leaders from around the world to highlight the contributions of women in computing and to build an inclusive and collaborative computing community across the UAE.</p>
+      <div class="two-col">
+        <div class="panel">
+          <h3>Lab to Launch</h3>
+          <p>Research is where ideas begin. WiCoDE27 is about what comes next: taking research from the lab to industry, a thesis to a career, and classroom learning to real problems. Decode the problem. Create the solution. Lead the change.</p>
+        </div>
+        <div class="panel">
+          <h3>The first edition</h3>
+          <p>WiCoDE26 took place on 16 and 17 February 2026 at BITS Pilani, Dubai Campus. It brought together global ACM-W leadership, faculty members, industry professionals and ACM student chapters, with 96 registered participants from institutions across the UAE.</p>
+          <p><a class="link" href="https://women.acm.org/wicode26-acm-w-asia-pacific-celebration-of-women-in-computing/" target="_blank" rel="noopener">Read about WiCoDE26 on the ACM-W website</a></p>
+        </div>
+        <div class="panel">
+          <h3>About ACM-W</h3>
+          <p>ACM-W, the ACM Council on Women in Computing, supports, celebrates and advocates internationally for the full engagement of women in all aspects of the computing field. ACM Celebrations of Women in Computing are regional events held around the world with participants from academia, industry and government.</p>
+        </div>
+        <div class="panel">
+          <h3>Who should attend</h3>
+          <ul class="ticks">
+            <li>Research scholars from all disciplines, in the UAE and abroad</li>
+            <li>Undergraduate and postgraduate students</li>
+            <li>Faculty members and researchers</li>
+            <li>Industry professionals and practitioners</li>
+            <li>ACM and ACM-W members and student chapter leaders</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROGRAMME -->
+  <section id="w27-programme" class="sec">
+    <div class="wrap">
+      <p class="kicker">Programme</p>
+      <h2 class="h2">Programme</h2>
+      <div class="tabs" role="tablist" aria-label="Programme days">
+        <button class="tab" role="tab" id="w27-t1" aria-controls="w27-p1" aria-selected="true">Day 1<small>Wed 7 April · Scholars’ Cohort</small></button>
+        <button class="tab" role="tab" id="w27-t2" aria-controls="w27-p2" aria-selected="false" tabindex="-1">Day 2<small>Thu 8 April · Celebration</small></button>
+        <button class="tab" role="tab" id="w27-t3" aria-controls="w27-p3" aria-selected="false" tabindex="-1">International Programme<small>For ACM-W Scholars and speakers</small></button>
+      </div>
+
+      <div class="panel-prog" role="tabpanel" id="w27-p1" aria-labelledby="w27-t1">
+        <h3 class="prog-title">Day 1, Wednesday 7 April 2027: ACM-W Scholars’ Cohort</h3>
+        <table class="prog">
+          <thead><tr><th>Time</th><th>Session</th><th>Speakers and details</th></tr></thead>
+          <tbody>
+            <tr class="brk"><td>08:30</td><td>Registration and breakfast</td><td>Career Studio opens</td></tr>
+            <tr><td>09:15</td><td>Welcome and inaugural address</td><td>Organisers and the leadership of BITS Pilani, Dubai Campus</td></tr>
+            <tr><td>09:40</td><td>ACM-W address</td><td>Dr. Rukiye Altin, ACM-W Global Chair</td></tr>
+            <tr><td>10:00</td><td>Keynote: Research careers beyond academia</td><td>To be announced in February 2027</td></tr>
+            <tr class="brk"><td>10:40</td><td>Break</td><td>Top 10 “My Research in 60 Seconds” videos</td></tr>
+            <tr><td>11:00</td><td>Industry panel: Research roles in industry</td><td>Dr. Rathan M, Gowri Shankar Sivabala and industry partners</td></tr>
+            <tr><td>12:00</td><td>Pitch to Industry</td><td>Ten scholar finalists</td></tr>
+            <tr class="brk"><td>12:50</td><td>Lunch and networking</td><td></td></tr>
+            <tr><td>13:45</td><td>Fireside chat: Academia or industry</td><td>Prof. Bimlesh Wadhwa, Dr. Arati Dixit and Dr. Dorota Filipczuk</td></tr>
+            <tr><td>14:30</td><td>Coffee with a Chair</td><td>Speed mentoring with ACM-W leaders and industry experts</td></tr>
+            <tr><td>15:20</td><td>Trend talks</td><td>Responsible AI in research; AI in industry research</td></tr>
+            <tr><td>16:00</td><td>WiCoDE Recognition Awards</td><td>Scholar and professional awards</td></tr>
+            <tr class="brk"><td>16:45</td><td>Close, high tea and networking</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel-prog" role="tabpanel" id="w27-p2" aria-labelledby="w27-t2" hidden>
+        <h3 class="prog-title">Day 2, Thursday 8 April 2027: WiCoDE27 Celebration</h3>
+        <table class="prog">
+          <thead><tr><th>Time</th><th>Session</th><th>Speakers and details</th></tr></thead>
+          <tbody>
+            <tr class="brk"><td>08:30</td><td>Registration</td><td></td></tr>
+            <tr><td>09:00</td><td>Welcome and ACM-W Asia Pacific address</td><td>Prof. Bimlesh Wadhwa, ACM-W Asia Pacific Chair</td></tr>
+            <tr><td>09:20</td><td>Keynote</td><td>To be announced in February 2027</td></tr>
+            <tr><td>10:00</td><td>Industry Challenge Sprint finals</td><td>Five finalist teams</td></tr>
+            <tr class="brk"><td>11:00</td><td>Break</td><td></td></tr>
+            <tr><td>11:15</td><td>Chapter showcase and hands-on workshops</td><td>Student chapter stands and parallel workshop tracks</td></tr>
+            <tr><td>11:15</td><td>ACM-W Scholars thesis feedback</td><td>One-on-one sessions for selected ACM-W Scholars</td></tr>
+            <tr class="brk"><td>12:45</td><td>Group photo</td><td></td></tr>
+            <tr class="brk"><td>13:00</td><td>Lunch</td><td></td></tr>
+            <tr><td>14:00</td><td>Fireside chat: First jobs, internships and leading with ACM-W</td><td>Dr. Leyla Atakan, young women professionals and student chapter leaders</td></tr>
+            <tr><td>14:45</td><td>Coffee with a Chair (student round)</td><td></td></tr>
+            <tr><td>15:15</td><td>Student awards ceremony</td><td></td></tr>
+            <tr><td>16:00</td><td>Closing remarks and vote of thanks</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="panel-prog" role="tabpanel" id="w27-p3" aria-labelledby="w27-t3" hidden>
+        <h3 class="prog-title">International Programme (for ACM-W Scholars and speakers)</h3>
+        <table class="prog">
+          <thead><tr><th>Date and time</th><th>Activity</th><th></th></tr></thead>
+          <tbody>
+            <tr><td>Tue 6 April 2027<br>18:30 to 20:30</td><td>Welcome reception</td><td></td></tr>
+            <tr><td>Fri 9 April 2027<br>09:00 to 11:30</td><td>Industry and innovation visit in Dubai</td><td></td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">The programme may change. The final programme will be published on 20 March 2027.</p>
+
+      <p class="kicker" style="margin-top:80px">Key dates</p>
+      <h2 class="h2">Key dates</h2>
+      <ol class="timeline" id="w27-dates">
+        <li data-d="2026-11-15"><span class="mk"></span><time>15 November 2026</time><p>ACM-W Scholars call opens</p></li>
+        <li data-d="2026-12-01"><span class="mk"></span><time>1 December 2026</time><p>Award nominations open</p></li>
+        <li data-d="2027-01-15"><span class="mk"></span><time>15 January 2027</time><p>ACM-W Scholars applications close; workshop proposals due</p></li>
+        <li data-d="2027-02-01"><span class="mk"></span><time>1 February 2027</time><p>Registration opens; Industry Challenge Sprint and video challenge begin</p></li>
+        <li data-d="2027-02-28"><span class="mk"></span><time>28 February 2027</time><p>Pitch to Industry abstracts, video entries and award nominations close</p></li>
+        <li data-d="2027-04-08" class="final"><span class="mk"></span><time>7 and 8 April 2027</time><p>WiCoDE27 at BITS Pilani, Dubai Campus</p></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- SCHOLARS -->
+  <section id="w27-scholars" class="sec alt">
+    <div class="wrap">
+      <p class="kicker">7 April 2027</p>
+      <h2 class="h2">ACM-W Scholars</h2>
+      <p class="lead">The ACM-W Scholars’ Cohort on 7 April 2027 brings research scholars from all disciplines together with ACM-W leaders and industry research experts. Every year, a group of research scholars from the UAE and abroad is selected as ACM-W Scholars and receives one-on-one feedback on their research, priority access to industry sessions and, for international scholars, the chance of a travel grant.</p>
+      <div class="banner-img" role="img" aria-label="Paper airplanes rising over purple and orange hills"></div>
+      <div class="two-col">
+        <div class="panel">
+          <h3>Who can apply</h3>
+          <ul class="ticks">
+            <li>Doctoral and research master’s scholars in any discipline, not only computing.</li>
+            <li>Scholars from universities in the UAE and from any other country.</li>
+            <li>Applicants of any gender are welcome. The programme gives particular attention to women in research.</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>What ACM-W Scholars receive</h3>
+          <ul class="ticks">
+            <li>Selection as an ACM-W Scholar 2027, with a certificate signed by the ACM-W chairs.</li>
+            <li>One-on-one thesis feedback: a 20-minute review of your two-page research summary by a senior mentor who has read it in advance.</li>
+            <li>Priority places in Pitch to Industry and Coffee with a Chair, and access to the Career Studio.</li>
+            <li>Travel grants for international scholars: about 20 grants covering a return flight and three hotel nights, subject to funding.</li>
+            <li>The International Programme: a welcome reception on 6 April and an industry and innovation visit on 9 April.</li>
+            <li>Three months of mentoring after the event, a feature in the ACM-W newsletter, and an invitation to return as a peer mentor in 2028.</li>
+          </ul>
+        </div>
+        <div class="panel">
+          <h3>How to apply</h3>
+          <ol class="steps">
+            <li>Complete the application form by 15 January 2027 with your CV, a research statement of up to 300 words, your institution and supervisor, and whether you are requesting a travel grant.</li>
+            <li>Ask your supervisor or your ACM-W chapter chair to send a short supporting statement through the form link we email to you.</li>
+            <li>Selected scholars and travel grants are announced on 10 February 2027. International scholars receive invitation and visa support letters by 28 February 2027.</li>
+            <li>Selected scholars submit a two-page research summary by 15 March 2027 and are matched with their mentor by 20 March 2027.</li>
+            <li>Join us in Dubai from 6 to 9 April 2027.</li>
+          </ol>
+          <p style="margin-top:4px"><span class="btn btn-purple" aria-disabled="true">Applications open 15 November 2026</span></p>
+        </div>
+        <div class="panel">
+          <h3>Selection criteria</h3>
+          <p>Quality and clarity of the research, its potential impact, the applicant’s motivation, and a balance of disciplines, institutions and countries.</p>
+          <h3 style="margin-top:28px">Not selected?</h3>
+          <p>All research scholars are welcome to register for Day 1, submit a Pitch to Industry abstract, enter the video challenge and book Coffee with a Chair.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GET INVOLVED -->
+  <section id="w27-involved" class="sec involve">
+    <div class="wrap">
+      <p class="kicker">Get involved</p>
+      <h2 class="h2">Get involved</h2>
+      <div class="cards three">
+        <div class="card">
+          <h3>Pitch to Industry</h3>
+          <div class="facts">
+            <p><b>Who</b>Research scholars from any discipline.</p>
+            <p><b>Submit</b>A one-page abstract covering the problem, your research, how it could be applied in industry, and what you would need from an industry partner. Published or under-review work is welcome.</p>
+            <p><b>Dates</b>Abstracts by 28 February 2027; ten finalists announced on 15 March 2027.</p>
+            <p><b>On the day</b>A three-minute pitch and two minutes of live feedback from the industry panel on 7 April.</p>
+            <p><b>Recognition</b>Best Pitch award and three months of mentoring with an industry leader or ACM-W chair.</p>
+          </div>
+        </div>
+        <div class="card">
+          <h3>My Research in 60 Seconds</h3>
+          <div class="facts">
+            <p><b>How</b>Post a vertical video of up to 60 seconds explaining your research on LinkedIn or Instagram with the hashtag #WiCoDE27, tag the Dubai ACM-W Professional Chapter, and submit the link through the entry form.</p>
+            <p><b>Dates</b>Entries from 1 to 28 February 2027; public voting from 1 to 10 March 2027.</p>
+            <p><b>Recognition</b>The top ten videos are shown at the event and the jury selects the Best Research Video.</p>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Industry Challenge Sprint</h3>
+          <div class="facts">
+            <p><b>Who</b>Teams of three or four students from UAE universities.</p>
+            <p><b>How</b>Partner companies release real problem statements on 1 February 2027. Teams work for five to six weeks, with one online check-in with the company.</p>
+            <p><b>Dates</b>Five finalist teams announced on 15 March 2027; finals on 8 April 2027.</p>
+            <p><b>Prize</b>An interview or a shadow day at the partner company.</p>
+          </div>
+        </div>
+        <div class="card">
+          <h3>Campus Cup</h3>
+          <p>The six partner student chapters compete for the Outstanding Student Chapter award. Chapters earn points for registered participants, event content they publish, entries to the challenges and their stand at the chapter showcase on 8 April.</p>
+        </div>
+        <div class="card">
+          <h3>Call for Workshops</h3>
+          <p>We invite proposals for hands-on workshops of 75 to 90 minutes, held in parallel tracks on 8 April. Send a title, a 200-word description, the intended audience and the facilitator’s short bio by 15 January 2027.</p>
+        </div>
+        <div class="card">
+          <h3>Volunteer</h3>
+          <p>Students from the partner chapters can volunteer for registration, speaker support, the Career Studio and social media. Volunteers receive a certificate and Campus Cup points for their chapter.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AWARDS -->
+  <section id="w27-awards" class="sec">
+    <div class="wrap">
+      <p class="kicker">Awards</p>
+      <h2 class="h2">WiCoDE Recognition Awards</h2>
+      <p class="lead">The WiCoDE Recognition Awards, presented by the Dubai ACM-W Professional Chapter, celebrate women in computing across research, industry and student leadership in the UAE. Every winner receives a trophy and a digital certificate.</p>
+      <table class="awards">
+        <thead><tr><th>Award</th><th>Who it is for</th><th>How winners are chosen</th></tr></thead>
+        <tbody>
+          <tr><td>Best Pitch</td><td data-l="For">Pitch to Industry finalists</td><td data-l="Chosen by">Industry panel on the day</td></tr>
+          <tr><td>Best Research Video</td><td data-l="For">Video challenge entrants</td><td data-l="Chosen by">Public vote for the shortlist, then the jury</td></tr>
+          <tr><td>Research to Impact</td><td data-l="For">Selected ACM-W Scholars 2027</td><td data-l="Chosen by">Jury, based on the research summary and mentor review</td></tr>
+          <tr><td>Excellence in Computing Research and Mentoring</td><td data-l="For">Women faculty members or researchers based in the UAE</td><td data-l="Chosen by">Nomination and jury</td></tr>
+          <tr><td>Women in Technology Industry Leadership</td><td data-l="For">Women leaders in the UAE technology sector</td><td data-l="Chosen by">Nomination and jury</td></tr>
+          <tr><td>Champion of Inclusion</td><td data-l="For">Anyone who has increased women’s participation in computing in the UAE</td><td data-l="Chosen by">Nomination and jury</td></tr>
+          <tr><td>Emerging Researcher Award</td><td data-l="For">Women postdoctoral researchers or early-career faculty in the UAE</td><td data-l="Chosen by">Nomination and jury</td></tr>
+          <tr><td>Industry Challenge Sprint Winner and Runner-up</td><td data-l="For">Sprint finalist teams</td><td data-l="Chosen by">Partner company judges on the day</td></tr>
+          <tr><td>Outstanding Student Leader in Computing</td><td data-l="For">Women students who have led ACM or ACM-W chapter work at a UAE university</td><td data-l="Chosen by">Nomination and jury</td></tr>
+          <tr><td>Outstanding Student Chapter</td><td data-l="For">Participating ACM and ACM-W student chapters</td><td data-l="Chosen by">Campus Cup points</td></tr>
+        </tbody>
+      </table>
+      <div class="two-col">
+        <div class="panel">
+          <h3>How to nominate</h3>
+          <p>Nominations are open from 1 December 2026 to 28 February 2027. The nomination form asks for the nominee’s details, a statement of up to 300 words and one supporting link. Self-nominations are welcome. Winners are decided by 20 March 2027 and presented at the ceremonies on 7 and 8 April.</p>
+        </div>
+        <div class="panel">
+          <h3>Jury</h3>
+          <p>The jury consists of ACM-W leaders and industry members. Jurors declare any conflict of interest and do not judge nominees from their own institution. Members of the organising committee are not eligible.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- SPEAKERS -->
+  <section id="w27-speakers" class="sec alt">
+    <div class="wrap">
+      <p class="kicker">Speakers</p>
+      <h2 class="h2">Speakers</h2>
+      <div class="row-head"><h3>ACM-W leadership</h3></div>
+      <ul class="people">
+        <li class="person"><div class="ph"><img src="{{A}}/people/altin.webp" alt="Dr. Rukiye Altin" loading="lazy"></div><h4>Dr. Rukiye Altin</h4><p>ACM-W Global Chair</p><p class="org">Kiel University, Germany</p></li>
+        <li class="person"><div class="ph"><img src="{{A}}/people/wadhwa.webp" alt="Prof. Bimlesh Wadhwa" loading="lazy"></div><h4>Prof. Bimlesh Wadhwa</h4><p>ACM-W Asia Pacific Chair</p><p class="org">National University of Singapore</p></li>
+        <li class="person"><div class="ph"><img src="{{A}}/people/dixit.webp" alt="Dr. Arati Dixit" loading="lazy"></div><h4>Dr. Arati Dixit</h4><p>ACM-W Chair, Regional Activities Committee</p><p class="org">ARA Inc. and North Carolina State University, USA</p></li>
+        <li class="person"><div class="ph" role="img" aria-label="Photo of Dr. Leyla Atakan to come"></div><h4>Dr. Leyla Atakan</h4><p>ACM-W Chair</p><p class="org">Bilkent, Turkey</p></li>
+        <li class="person"><div class="ph"><img src="{{A}}/people/filipczuk.webp" alt="Dr. Dorota Filipczuk" loading="lazy"></div><h4>Dr. Dorota Filipczuk</h4><p>ACM-W Europe Chair</p><p class="org">Microsoft</p></li>
+      </ul>
+      <div class="row-head"><h3>Industry experts</h3></div>
+      <ul class="people">
+        <li class="person"><div class="ph"><img src="{{A}}/people/rathan.webp" alt="Dr. Rathan M" loading="lazy"></div><h4>Dr. Rathan M</h4><p>Senior Director of Artificial Intelligence</p><p class="org">Exalogic Consulting, Dubai</p></li>
+        <li class="person"><div class="ph"><img src="{{A}}/people/sivabala.webp" alt="Gowri Shankar Sivabala" loading="lazy"></div><h4>Gowri Shankar Sivabala</h4><p>Ethical AI Consultant and Founder, AI and Quantum International Hub (AIQUAINT)</p><p class="org">UAE</p></li>
+      </ul>
+      <p class="note">More speakers and the keynote speakers will be announced from February 2027.</p>
+    </div>
+  </section>
+
+  <!-- ORGANISERS -->
+  <section id="w27-organisers" class="sec" style="background:#f1eee7">
+    <div class="wrap">
+      <p class="kicker">Organisers and partners</p>
+      <h2 class="h2">Organisers and partners</h2>
+
+      <div class="org-tier">
+        <div class="lbl"><p>Organised by</p><h3>Chapters and host</h3></div>
+        <ul class="tiles">
+          <li class="tile wide"><div class="lg wide">Dubai ACM-W Professional Chapter</div><h4>Dubai ACM-W Professional Chapter</h4></li>
+          <li class="tile wide"><div class="lg wide" style="background:#fff"><img src="{{A}}/logos/acm-dubai.png" alt="Dubai ACM Professional Chapter logo"></div><h4>Dubai ACM Professional Chapter</h4></li>
+          <li class="tile wide"><div class="lg wide">BITS Pilani, Dubai Campus</div><h4>Host: BITS Pilani, Dubai Campus</h4></li>
+        </ul>
+      </div>
+
+      <div class="org-tier">
+        <div class="lbl"><p>Led by</p><h3>General Chairs</h3></div>
+        <ul class="tiles">
+          <li class="chair"><div class="person"><div class="ph"><img src="{{A}}/people/rajasekar.webp" alt="Prof. Elakkiya Rajasekar" loading="lazy"></div></div><h4>Prof. Elakkiya Rajasekar</h4><p>Chair, Dubai ACM-W Professional Chapter; Vice-Chair, Dubai ACM Professional Chapter; BITS Pilani, Dubai Campus</p></li>
+          <li class="chair"><div class="person"><div class="ph"><img src="{{A}}/people/jothi.webp" alt="Prof. Angel Arul Jothi" loading="lazy"></div></div><h4>Prof. Angel Arul Jothi</h4><p>Chair, Dubai ACM Professional Chapter; Vice-Chair, Dubai ACM-W Professional Chapter; BITS Pilani, Dubai Campus</p></li>
+        </ul>
+      </div>
+
+      <div class="org-tier">
+        <div class="lbl"><p>Guided by</p><h3>Steering Committee</h3></div>
+        <p style="font-size:17px;line-height:1.7">Dr. Rukiye Altin, Prof. Bimlesh Wadhwa, Dr. Arati Dixit, Dr. Leyla Atakan and Dr. Dorota Filipczuk</p>
+      </div>
+
+      <div class="org-tier">
+        <div class="lbl"><p>Supported by</p><h3>Chapter office-bearers</h3></div>
+        <ul class="plain">
+          <li><b>Prof. Soniya Priyatharshini</b>, Treasurer and Secretary, Dubai ACM-W Professional Chapter</li>
+          <li><b>Suyash Shukla</b>, Treasurer and Secretary, Dubai ACM Professional Chapter</li>
+          <li><b>Alavikunhu Panthakkan</b>, Membership Chair, Dubai ACM Professional Chapter</li>
+        </ul>
+      </div>
+
+      <div class="org-tier">
+        <div class="lbl"><p>Thanks to our</p><h3>Student chapters</h3></div>
+        <ul class="tiles">
+          <li class="tile"><div class="lg"><img src="{{A}}/logos/acmw-bpdc.jpg" alt="ACM-W BITS Pilani, Dubai logo"></div><h4>ACM-W BITS Pilani, Dubai</h4></li>
+          <li class="tile"><div class="lg">Symbiosis ACM-W Student Chapter</div><h4>Symbiosis ACM-W Student Chapter</h4></li>
+          <li class="tile"><div class="lg"><img src="{{A}}/logos/acm-bpdc.png" alt="ACM BITS Pilani Dubai Student Chapter logo"></div><h4>ACM BITS Pilani Dubai Student Chapter</h4></li>
+          <li class="tile"><div class="lg dark"><img src="{{A}}/logos/acm-uobd.png" alt="UoBD ACM Student Chapter logo"></div><h4>UoBD ACM Student Chapter</h4></li>
+          <li class="tile"><div class="lg">ACM Student Chapter MAHE Dubai</div><h4>ACM Student Chapter MAHE Dubai</h4></li>
+          <li class="tile"><div class="lg">ACM Student Chapter Amity Dubai</div><h4>ACM Student Chapter Amity Dubai</h4></li>
+        </ul>
+      </div>
+
+      <div class="org-tier">
+        <div class="lbl"><p>Thanks to our</p><h3>Industry partners</h3></div>
+        <p style="font-size:17px">Announced soon.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRAVEL -->
+  <section id="w27-travel">
+    <div class="venue-band">
+      <div class="wrap">
+        <p class="kicker">Venue and travel</p>
+        <h2>BITS Pilani, Dubai Campus</h2>
+      </div>
+    </div>
+    <div class="wrap">
+      <div class="venue-grid">
+        <div>
+          <h3 style="font-size:28px">Getting there</h3>
+          <div class="info-h">Address</div>
+          <p class="info-b">BITS Pilani, Dubai Campus<br>Dubai International Academic City<br>P.O. Box 345055, Dubai<br>United Arab Emirates</p>
+          <div class="info-h">Directions</div>
+          <p class="info-b">The campus is in Dubai International Academic City. Taxis and ride-hailing services are the easiest way to reach the campus from Dubai International Airport and from the city. Parking is available on campus. Detailed arrival information will be emailed to registered participants.</p>
+          <p style="margin-top:14px"><a class="btn btn-purple" href="https://www.google.com/maps/search/?api=1&amp;query=BITS+Pilani+Dubai+Campus" target="_blank" rel="noopener">Open in Google Maps</a></p>
+        </div>
+        <iframe class="map" title="Map of BITS Pilani, Dubai Campus" src="https://www.google.com/maps?q=BITS+Pilani+Dubai+Campus&amp;output=embed" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+      <div class="panel intl" style="margin-bottom:80px">
+        <h3>For international participants</h3>
+        <ul class="ticks">
+          <li><b>Visa support:</b> selected ACM-W Scholars and speakers receive invitation and visa support letters from BITS Pilani, Dubai Campus by 28 February 2027.</li>
+          <li><b>Accommodation:</b> a group hotel rate near Dubai International Academic City will be shared with selected scholars.</li>
+          <li><b>Arrival:</b> please plan to arrive by the evening of Tuesday 6 April 2027 for the welcome reception and depart after 12:00 on Friday 9 April 2027.</li>
+          <li><b>Weather:</b> April in Dubai is warm, with daytime temperatures usually above 30 °C. Venues are air-conditioned.</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- REGISTER -->
+  <section id="w27-register" class="sec register">
+    <div class="wrap">
+      <p class="kicker">Register</p>
+      <h2 class="h2">Register</h2>
+      <p class="lead">Registration is free and opens on 1 February 2027. It closes on 31 March 2027, or earlier if places are full.</p>
+      <p class="reg-status" id="w27-regstatus">Registration opens on 1 February 2027.</p>
+      <p class="kicker" style="margin-top:44px;color:#fff">The registration form will ask for</p>
+      <ul class="reg-fields">
+        <li>Full name, email and phone number</li>
+        <li>Institution or organisation, and role (research scholar, student, faculty member, industry professional)</li>
+        <li>Days attending: Day 1, Day 2 or both</li>
+        <li>Coffee with a Chair booking: preferred round and mentor (Day 1 for scholars, Day 2 for students)</li>
+        <li>Preferred workshop track on Day 2</li>
+        <li>Student chapter, if any (counts towards the Campus Cup)</li>
+        <li>Dietary requirements and accessibility needs</li>
+        <li>Consent to be photographed and filmed during the event</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- FAQ -->
+  <section id="w27-faq" class="sec alt">
+    <div class="wrap">
+      <p class="faq-word">FAQ</p>
+      <div class="faq">
+        <details><summary>Who can attend?<span aria-hidden="true">+</span></summary><p>Research scholars, students, faculty members and industry professionals of any gender. Day 1 is designed for research scholars and Day 2 for students, and everyone is welcome on both days.</p></details>
+        <details><summary>How much does it cost?<span aria-hidden="true">+</span></summary><p>Attendance is free. Registration is required because places are limited.</p></details>
+        <details><summary>Do I need to be a computer science scholar to join the Scholars’ Cohort?<span aria-hidden="true">+</span></summary><p>No. The Scholars’ Cohort is open to research scholars from all disciplines.</p></details>
+        <details><summary>Is there a publication or proceedings?<span aria-hidden="true">+</span></summary><p>No. WiCoDE27 is a celebration and mentoring event, not a conference with proceedings. Published or under-review work is welcome in Pitch to Industry, and taking part does not prevent you from publishing your work elsewhere.</p></details>
+        <details><summary>How do I become an ACM-W Scholar?<span aria-hidden="true">+</span></summary><p>Apply through the ACM-W Scholars section between 15 November 2026 and 15 January 2027. Selected scholars are announced on 10 February 2027.</p></details>
+        <details><summary>Are travel grants available?<span aria-hidden="true">+</span></summary><p>About 20 travel grants for international ACM-W Scholars cover a return flight and three hotel nights, subject to funding. Indicate in your application if you are requesting one.</p></details>
+        <details><summary>Can I join the Industry Challenge Sprint on my own?<span aria-hidden="true">+</span></summary><p>Teams have three or four members. If you do not have a team, register your interest and we will help you find one.</p></details>
+        <details><summary>Will I receive a certificate?<span aria-hidden="true">+</span></summary><p>Yes. Participants who complete their event passport receive a digital participation certificate.</p></details>
+        <details><summary>How do I nominate someone for an award?<span aria-hidden="true">+</span></summary><p>Use the nomination form in the Awards section between 1 December 2026 and 28 February 2027. Self-nominations are welcome.</p></details>
+      </div>
+    </div>
+  </section>
+
+  <!-- BE PART OF -->
+  <section class="sec">
+    <div class="wrap">
+      <h2 class="h2" style="max-width:18ch">Be part of WiCoDE27</h2>
+      <div class="cards three">
+        <div class="card"><h3>Attend</h3><p>Join the panels, mentoring and challenges. Free for all participants.</p><a class="btn btn-purple" href="#w27-register">Register</a></div>
+        <div class="card"><h3>Become an ACM-W Scholar</h3><p>Research scholars from the UAE and abroad can apply for one-on-one thesis feedback, industry exposure and travel grants.</p><a class="btn btn-gold" href="#w27-scholars">Apply</a></div>
+        <div class="card"><h3>Nominate</h3><p>Know a woman in computing who deserves recognition? Nominate her for a WiCoDE Recognition Award.</p><a class="btn btn-purple" href="#w27-awards">Nominate</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- CLOSING + CONTACT -->
+  <section class="closing">
+    <div class="wrap" style="padding-top:56px">
+      <p class="word">WiCoDE27<br>Lab to Launch</p>
+      <div class="contact">
+        <div><p class="k">Contact</p><p class="v"><a href="mailto:elakkiya@dubai.bits-pilani.ac.in">elakkiya@dubai.bits-pilani.ac.in</a></p></div>
+        <div><p class="k">Address</p><p class="v">BITS Pilani, Dubai Campus, Dubai International Academic City, P.O. Box 345055, Dubai, UAE</p></div>
+        <div><p class="k">Chapter website</p><p class="v"><a href="https://dubai.acm.org">dubai.acm.org</a></p></div>
+        <div><p class="k">Hashtag</p><p class="v">#WiCoDE27</p></div>
+      </div>
+    </div>
+    <div class="tiles5" aria-hidden="true">
+      <div style="background:#fab001 url('{{A}}/art/tile-saffron.webp') center/140px 140px"></div>
+      <div class="t-dots" style="background-color:#b79ae0"></div>
+      <div class="t-blob" style="background-color:#c47a60"></div>
+      <div class="t-dots" style="background-color:#e6dff0"></div>
+      <div class="t-blob" style="background-color:#6b3fa0"></div>
+    </div>
+    <div class="wrap">
+      <div class="foot">
+        <p>WiCoDE27 is organised by the Dubai ACM-W Professional Chapter and the Dubai ACM Professional Chapter and hosted by BITS Pilani, Dubai Campus.</p>
+        <p>© 2026 Dubai ACM-W Professional Chapter</p>
+      </div>
+    </div>
+  </section>
+</div>
+
+<script>
+(function () {
+  var root = document.getElementById("w27");
+  if (!root) return;
+
+  // Countdown to 08:30 on 7 April 2027, UAE time (GMT+4).
+  var target = Date.parse("2027-04-07T08:30:00+04:00");
+  var cells = {};
+  root.querySelectorAll("#w27-count [data-u]").forEach(function (el) { cells[el.dataset.u] = el; });
+  function pad(n) { return String(n).padStart(2, "0"); }
+  function tick() {
+    var left = Math.max(0, target - Date.now());
+    var s = Math.floor(left / 1000);
+    cells.d.textContent = Math.floor(s / 86400);
+    cells.h.textContent = pad(Math.floor(s / 3600) % 24);
+    cells.m.textContent = pad(Math.floor(s / 60) % 60);
+    cells.s.textContent = pad(s % 60);
+  }
+  tick(); setInterval(tick, 1000);
+
+  // Key dates: mark the ones already passed as completed.
+  var today = new Date();
+  root.querySelectorAll("#w27-dates li").forEach(function (li) {
+    if (new Date(li.dataset.d + "T23:59:59+04:00") < today) li.classList.add("done");
+  });
+
+  // Registration status line switches by date.
+  var reg = document.getElementById("w27-regstatus");
+  if (reg) {
+    if (today >= new Date("2027-04-01T00:00:00+04:00")) reg.textContent = "Registration is closed.";
+    else if (today >= new Date("2027-02-01T00:00:00+04:00")) reg.textContent = "Registration is open until 31 March 2027.";
+  }
+
+  // Programme tabs, with arrow-key support.
+  var tabs = Array.prototype.slice.call(root.querySelectorAll('[role="tab"]'));
+  function select(tab) {
+    tabs.forEach(function (t) {
+      var on = t === tab;
+      t.setAttribute("aria-selected", on ? "true" : "false");
+      t.tabIndex = on ? 0 : -1;
+      document.getElementById(t.getAttribute("aria-controls")).hidden = !on;
+    });
+  }
+  tabs.forEach(function (t, i) {
+    t.addEventListener("click", function () { select(t); });
+    t.addEventListener("keydown", function (e) {
+      var j = e.key === "ArrowRight" ? i + 1 : e.key === "ArrowLeft" ? i - 1 : null;
+      if (j === null) return;
+      var next = tabs[(j + tabs.length) % tabs.length];
+      select(next); next.focus();
+    });
+  });
+
+  // Highlight the section in view in the WiCoDE27 nav.
+  var links = root.querySelectorAll('.nav a[href^="#w27-"]');
+  if ("IntersectionObserver" in window) {
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (en) {
+        if (!en.isIntersecting) return;
+        links.forEach(function (a) { a.classList.toggle("on", a.getAttribute("href") === "#" + en.target.id && !a.classList.contains("reg")); });
+      });
+    }, { rootMargin: "-40% 0px -55% 0px" });
+    root.querySelectorAll("section[id]").forEach(function (s) { io.observe(s); });
+  }
+})();
+</script>
