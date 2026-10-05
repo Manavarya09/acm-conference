@@ -1,0 +1,8 @@
+# Let dubai.acm.org fetch the artwork, headshots and logos (used to copy them
+# into its WordPress media library for the WiCoDE27 events page).
+/art/*
+  Access-Control-Allow-Origin: https://dubai.acm.org
+/people/*
+  Access-Control-Allow-Origin: https://dubai.acm.org
+/logos/*
+  Access-Control-Allow-Origin: https://dubai.acm.org
