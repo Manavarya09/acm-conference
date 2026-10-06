@@ -132,16 +132,16 @@ export const expertPanel: Person[] = [
   { name: "Prof Bimlesh Wadhwa", photo: "/people/wadhwa.webp", role: "ACM-W Asia Pacific Chair", affiliation: "NUS, Singapore" },
   { name: "Dr Rukiye Altin", photo: "/people/altin.webp", role: "ACM-W Global Chair", affiliation: "Kiel University, Germany" },
   { name: "Dr Arati Dixit", photo: "/people/dixit.webp", role: "ACM-W Chair, Regional Activities", affiliation: "North Carolina University" },
-  { name: "Dr Leyla Atakan", role: "ACM-W Chair", affiliation: "Bilkent, Turkey" },
+  { name: "Dr Leyla Atakan", photo: "/people/atakan.webp", role: "ACM-W Chair", affiliation: "Bilkent, Turkey" },
   { name: "Dr Dorota Filipczuk", photo: "/people/filipczuk.webp", role: "ACM-W Chair, Europe", affiliation: "Microsoft" },
 ];
 
 /** More names to come from the organisers. */
 export const industryPanel: Person[] = [
-  { name: "Dr Rathan M", photo: "/people/rathan.webp", role: "Senior Director of Artificial Intelligence", affiliation: "Exalogic Consulting, Dubai" },
+  { name: "Dr Rathan M", photo: "/people/rathan-2.webp", role: "Senior Director of Artificial Intelligence", affiliation: "Exalogic Consulting, Dubai" },
   {
     name: "Gowri Shankar Sivabala",
-    photo: "/people/sivabala.webp",
+    photo: "/people/sivabala-2.webp",
     role: "Ethical AI Consultant; Founder, AI and Quantum International Hub (AIQUAINT)",
     affiliation: "UAE",
   },
