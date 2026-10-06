@@ -81,7 +81,7 @@ export default function Header() {
           {/* Mark — placeholder for the chapter's own logo. */}
           <a href="#top" className="flex shrink-0 items-center gap-3">
             <Image
-              src="/logos/wicode27-mark.webp"
+              src="/logos/wicode27-mark-2.webp"
               alt="WiCoDE27 logo"
               width={44}
               height={44}
