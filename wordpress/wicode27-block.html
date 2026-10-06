@@ -218,9 +218,9 @@ html, body { overflow-x: clip; }
 #w27 .tcards { margin-top: 48px; display: grid; gap: 28px; }
 @media (min-width: 768px) { #w27 .tcards { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 1024px) { #w27 .tcards { grid-template-columns: repeat(3, 1fr); } }
-#w27 .tcard { position: relative; border-radius: 12px; border: 1px solid rgba(107,63,160,.2); background: linear-gradient(to bottom right, var(--blue-pale), #fff); padding: 28px 20px 20px; }
+#w27 .tcard { position: relative; border-radius: 0; border: 1px solid rgba(107,63,160,.2); background: linear-gradient(to bottom right, var(--blue-pale), #fff); padding: 28px 20px 20px; }
 #w27 .tcard.warm { border-color: rgba(196,122,96,.3); background: linear-gradient(to bottom right, var(--warm-soft), #fff); }
-#w27 .tcard .badge { position: absolute; top: -12px; left: 20px; z-index: 1; border-radius: 6px; background: var(--brand); padding: 4px 12px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .025em; color: #fff; }
+#w27 .tcard .badge { position: absolute; top: -12px; left: 20px; z-index: 1; border-radius: 0; background: var(--brand); padding: 4px 12px; font-size: 12px; font-weight: 700; text-transform: uppercase; letter-spacing: .025em; color: #fff; }
 #w27 .tcard.warm .badge { background: var(--warm); }
 #w27 .tcard h3 { font-family: var(--display); font-size: 26px; font-weight: 700; line-height: 1.15; color: var(--brand); }
 #w27 .tcard.warm h3 { color: var(--warm); }
@@ -229,8 +229,9 @@ html, body { overflow-x: clip; }
 #w27 .tcard li .b { position: absolute; left: 0; top: 8px; width: 7px; height: 7px; background: var(--brand); }
 #w27 .tcard.warm li .b { background: var(--warm); }
 #w27 .tcard ol li { padding-left: 30px; }
-#w27 .tcard ol li .b { width: 20px; height: 20px; top: 1px; border-radius: 4px; display: grid; place-items: center; font-family: var(--serif); font-size: 15px; color: #fff; }
-#w27 .tcard p { margin-top: 12px; font-family: var(--serif); font-size: 18px; line-height: 1.45; color: var(--ink); }
+#w27 .tcard ol li .b { width: 20px; height: 20px; top: 1px; border-radius: 0; display: grid; place-items: center; font-family: var(--mono); font-size: 12px; color: #fff; }
+#w27 .tcard p { margin-top: 12px; font-size: 15px; line-height: 1.55; color: var(--ink); }
+@media (min-width: 1024px) { #w27 .tcards > li:last-child:nth-child(3n+2) { grid-column: span 2; } }
 
 /* Awards: same ruled rows as the schedule */
 #w27 .awards { border-top: 1px solid var(--rule); background: #fff; }
