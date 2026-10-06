@@ -148,7 +148,7 @@ export const industryPanel: Person[] = [
 ];
 
 export const organisingChapters: { name: string; logo?: string }[] = [
-  { name: "ACM-W Dubai Professional Chapter" },
+  { name: "ACM-W Dubai Professional Chapter", logo: "/logos/acmw.png" },
   { name: "ACM Dubai Professional Chapter", logo: "/logos/acm-dubai.png" },
 ];
 
@@ -160,11 +160,11 @@ export const organisers: Person[] = [
 /** Names as the chapters write them on their own pages, where found. */
 export const studentChapters: { name: string; logo?: string; darkLogo?: boolean }[] = [
   { name: "ACM-W BITS Pilani, Dubai", logo: "/logos/acmw-bpdc.jpg" },
-  { name: "Symbiosis ACM-W Student Chapter" },
+  { name: "Symbiosis ACM-W Student Chapter", logo: "/logos/symbiosis-dubai.png" },
   { name: "ACM BITS Pilani Dubai Student Chapter", logo: "/logos/acm-bpdc.png" },
   { name: "UoBD ACM Student Chapter", logo: "/logos/acm-uobd.png", darkLogo: true },
-  { name: "ACM Student Chapter MAHE Dubai" },
-  { name: "ACM Student Chapter Amity Dubai" },
+  { name: "ACM Student Chapter MAHE Dubai", logo: "/logos/mahe-dubai.png" },
+  { name: "ACM Student Chapter Amity Dubai", logo: "/logos/amity-dubai.png", darkLogo: true },
 ];
 
 export const venue = {
