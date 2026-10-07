@@ -163,7 +163,7 @@ export const studentChapters: { name: string; logo?: string; darkLogo?: boolean 
   { name: "Symbiosis ACM-W Student Chapter", logo: "/logos/symbiosis-dubai.png" },
   { name: "ACM BITS Pilani Dubai Student Chapter", logo: "/logos/acm-bpdc.png" },
   { name: "UoBD ACM Student Chapter", logo: "/logos/acm-uobd.png", darkLogo: true },
-  { name: "ACM Student Chapter MAHE Dubai", logo: "/logos/mahe-dubai.png" },
+  { name: "ACM Student Chapter MAHE Dubai", logo: "/logos/acm-mahe.png" },
   { name: "ACM Student Chapter Amity Dubai", logo: "/logos/amity-dubai.png", darkLogo: true },
 ];
 
