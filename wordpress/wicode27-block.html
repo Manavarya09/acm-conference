@@ -19,7 +19,7 @@ html, body { overflow-x: clip; }
 
 /* Tokens from app/globals.css */
 #w27 {
-  --brand: #6b3fa0; --navy: #3b1f5e; --navy-bar: #2a1645; --ink: #3c3c3c; --ink-soft: #505050;
+  --brand: #6b3fa0; --navy: #3b1f5e; --navy-bar: #2a1645; --ink: #1a1a1a; --ink-soft: #3b1f5e;
   --grey-band: #f2f2f2; --grey-head: #f6f6f6; --grey-soft: #fafafa; --blue-pale: #f1eafb; --rule: #e4e4e4;
   --warm: #c47a60; --warm-soft: #f8ebe5; --sand: #f1eee7; --wicode: #5b21b6; --wicode-deep: #2e1065; --wicode-light: #d8c4ff;
   --condensed: "Roboto Condensed", "Arial Narrow", sans-serif;
@@ -85,7 +85,7 @@ html, body { overflow-x: clip; }
 #w27 .tags span:first-child { background: var(--brand); }
 #w27 .facts { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 12px 36px; }
 #w27 .facts li { display: flex; align-items: center; gap: 10px; }
-#w27 .facts svg { width: 20px; height: 20px; color: rgba(255,255,255,.8); flex-shrink: 0; }
+#w27 .facts svg { width: 20px; height: 20px; color: #fff; flex-shrink: 0; }
 #w27 .facts span { font-family: var(--condensed); font-size: 18px; text-transform: uppercase; letter-spacing: .025em; color: #fff; }
 #w27 .ctas { margin-top: 36px; display: flex; flex-wrap: wrap; gap: 12px; }
 #w27 .btn-solid, #w27 .btn-line { padding: 14px 28px; font-family: var(--condensed); font-size: 16px; font-weight: 700; text-transform: uppercase; letter-spacing: .025em; color: #fff; transition: background .15s, color .15s; }
@@ -274,7 +274,7 @@ html, body { overflow-x: clip; }
 #w27 .vband { position: relative; height: 240px; overflow: hidden; background: var(--navy-bar) url("https://dubai.acm.org/wp-content/uploads/2026/10/wicode27-art-venue-1-scaled.webp") center bottom / cover; }
 #w27 .vband::after { content: ""; position: absolute; inset: 0; background: linear-gradient(to top, rgba(42,22,69,.9), rgba(42,22,69,.3), transparent); }
 #w27 .vband .wrap { position: relative; z-index: 1; display: flex; height: 100%; flex-direction: column; justify-content: flex-end; padding-bottom: 32px; }
-#w27 .vband p { font-family: var(--display); font-size: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: .2em; color: rgba(255,255,255,.85); }
+#w27 .vband p { font-family: var(--display); font-size: 15px; font-weight: 600; text-transform: uppercase; letter-spacing: .2em; color: #fff; }
 #w27 .vband h2 { margin-top: 4px; font-family: var(--display); font-size: 36px; font-weight: 700; line-height: 1.25; color: #fff; }
 @media (min-width: 640px) { #w27 .vband h2 { font-size: 48px; } }
 #w27 .vgrid { display: grid; gap: 40px; padding-top: 56px; padding-bottom: 56px; }
@@ -360,7 +360,7 @@ html, body { overflow-x: clip; }
 #w27 .aband { background: var(--grey-band); }
 #w27 .aband .wrap { display: flex; flex-wrap: wrap; justify-content: center; gap: 8px 36px; padding-top: 16px; padding-bottom: 16px; }
 #w27 .aband a { font-family: var(--condensed); font-size: 15px; text-transform: uppercase; letter-spacing: .025em; color: var(--brand); }
-#w27 .wfoot { background: var(--navy-bar); color: rgba(255,255,255,.75); }
+#w27 .wfoot { background: var(--navy-bar); color: #fff; }
 #w27 .wfoot .inner { max-width: 1200px; margin: 0 auto; padding: 48px 24px; }
 @media (min-width: 640px) { #w27 .wfoot .inner { padding: 48px; } }
 @media (min-width: 1024px) { #w27 .wfoot .inner { padding: 48px 80px; } }
@@ -369,11 +369,11 @@ html, body { overflow-x: clip; }
 #w27 .wfoot .mk-box { display: grid; place-items: center; width: 40px; height: 40px; border-radius: 2px; background: #fff; font-family: var(--condensed); font-size: 14px; font-weight: 700; color: var(--navy); }
 #w27 .wfoot .mk-box img { width: 32px; height: 32px; }
 #w27 .wfoot .mk-name { font-family: var(--condensed); font-size: 22px; font-weight: 500; line-height: 1.05; color: #fff; }
-#w27 .wfoot .mk-name span { display: block; font-size: 15px; font-weight: 400; color: rgba(255,255,255,.7); }
+#w27 .wfoot .mk-name span { display: block; font-size: 15px; font-weight: 400; color: #fff; }
 #w27 .wfoot .chip { background: #fff; padding: 12px 16px; }
 #w27 .wfoot .chip img { height: 48px; width: auto; }
 #w27 .wfoot .links { margin-top: 32px; display: flex; flex-wrap: wrap; gap: 12px 32px; }
-#w27 .wfoot .links a { font-family: var(--condensed); font-size: 15px; text-transform: uppercase; letter-spacing: .025em; color: rgba(255,255,255,.8); }
+#w27 .wfoot .links a { font-family: var(--condensed); font-size: 15px; text-transform: uppercase; letter-spacing: .025em; color: #fff; }
 #w27 .wfoot .fine { margin-top: 40px; border-top: 1px solid rgba(255,255,255,.15); padding-top: 24px; font-size: 13px; line-height: 1.625; }
 #w27 .wfoot .fine p + p { margin-top: 8px; }
 #w27 .wfoot .fine a { text-decoration: underline; color: #fff; }
@@ -843,7 +843,6 @@ html, body { overflow-x: clip; }
           <li>#WiCoDE27</li>
           <li><a href="mailto:elakkiya@dubai.bits-pilani.ac.in">Contact us</a></li>
           <li><a href="https://dubai.acm.org">dubai.acm.org</a></li>
-          <li><a href="https://www.linkedin.com/company/acmw-bpdc/" target="_blank" rel="noopener">LinkedIn</a></li>
         </ul>
         <p class="r">BITS Pilani, Dubai Campus<small>7 and 8 April 2027</small></p>
       </div>
